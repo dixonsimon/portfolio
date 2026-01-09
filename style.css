@@ -1,180 +1,274 @@
 :root {
-            /* Dark Mode Defaults */
-            --bg-primary: #050505;
-            --text-primary: #ffffff;
-            --text-secondary: #a1a1aa;
-            --border-color: rgba(255, 255, 255, 0.1);
-            --cursor-color: #ffffff;
-            --stroke-color: rgba(255, 255, 255, 0.5);
+    /* Dark Mode Defaults */
+    --bg-primary: #050505;
+    --text-primary: #ffffff;
+    --text-secondary: #a1a1aa;
+    --border-color: rgba(255, 255, 255, 0.1);
+    --cursor-color: #ffffff;
+    --stroke-color: rgba(255, 255, 255, 0.5);
 
-            --nav-about: #00f2fe;
-            --nav-work: #ff0080;
-            --nav-contact: #facc15;
+    --nav-about: #00f2fe;
+    --nav-work: #ff0080;
+    --nav-contact: #facc15;
 
-            --cyan-grad: linear-gradient(to right, #00f2fe, #4facfe);
-            --purple-grad: linear-gradient(to right, #8f00ff, #e100ff);
-            --pink-grad: linear-gradient(to right, #ff0080, #ff5c9d);
-        }
+    --cyan-grad: linear-gradient(to right, #00f2fe, #4facfe);
+    --purple-grad: linear-gradient(to right, #8f00ff, #e100ff);
+    --pink-grad: linear-gradient(to right, #ff0080, #ff5c9d);
+}
 
-        /* Light Mode Overrides */
-        html.light {
-            --bg-primary: #ffffff;
-            --text-primary: #0a0a0a;
-            --text-secondary: #52525b;
-            --border-color: rgba(0, 0, 0, 0.1);
-            --cursor-color: #000000;
-            --stroke-color: rgba(0, 0, 0, 0.5);
-        }
+/* Light Mode Overrides */
+html.light {
+    --bg-primary: #ffffff;
+    --text-primary: #0a0a0a;
+    --text-secondary: #52525b;
+    --border-color: rgba(0, 0, 0, 0.1);
+    --cursor-color: #000000;
+    --stroke-color: rgba(0, 0, 0, 0.5);
+}
 
-        body {
-            font-family: 'Inter', sans-serif;
-            overflow-x: hidden;
-            cursor: none;
-            background-color: var(--bg-primary);
-            color: var(--text-primary);
-            transition: background-color 0.5s cubic-bezier(0.16, 1, 0.3, 1), color 0.5s cubic-bezier(0.16, 1, 0.3, 1);
-        }
+html,
+body {
+    overflow-x: hidden;
+    width: 100%;
+    max-width: 100%;
+}
 
-        /* Mobile cursor fix */
-        @media (hover: none) and (pointer: coarse) {
-            body {
-                cursor: auto;
-            }
-            .cursor-dot,
-            .cursor-outline {
-                display: none !important;
-            }
-        }
+body {
+    font-family: 'Inter', sans-serif;
+    cursor: none;
+    background-color: var(--bg-primary);
+    color: var(--text-primary);
+    transition: background-color 0.5s cubic-bezier(0.16, 1, 0.3, 1), color 0.5s cubic-bezier(0.16, 1, 0.3, 1);
+}
 
-        h1, h2, h3, .brand-font {
-            font-family: 'Syne', sans-serif;
-        }
+/* Mobile cursor fix */
+@media (hover: none) and (pointer: coarse) {
+    body {
+        cursor: auto;
+    }
 
-        /* --- Scroll Progress Bar --- */
-        .scroll-progress {
-            position: fixed; top: 0; left: 0; height: 3px;
-            background: linear-gradient(90deg, var(--nav-about), var(--nav-work), var(--nav-contact));
-            width: 0%; z-index: 100;
-        }
+    .cursor-dot,
+    .cursor-outline {
+        display: none !important;
+    }
+}
 
-        /* --- Custom Cursor --- */
-        .cursor-dot, .cursor-outline {
-            position: fixed; top: 0; left: 0;
-            transform: translate(-50%, -50%);
-            border-radius: 50%; z-index: 9999; pointer-events: none;
-        }
-        .cursor-dot {
-            width: 8px; height: 8px;
-            background-color: var(--cursor-color);
-            transition: background-color 0.3s;
-        }
-        .cursor-outline {
-            width: 40px; height: 40px;
-            border: 2px solid var(--cursor-color);
-            opacity: 0.5;
-            transition: all 0.2s cubic-bezier(0.16, 1, 0.3, 1);
-        }
-        body.hovering .cursor-outline {
-            width: 60px; height: 60px;
-            background-color: var(--cursor-color);
-            opacity: 0.1; border-color: transparent;
-        }
+h1,
+h2,
+h3,
+.brand-font {
+    font-family: 'Syne', sans-serif;
+}
 
-        /* --- Utilities --- */
-        .text-gradient-cyan { background: var(--cyan-grad); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
-        .text-gradient-purple { background: var(--purple-grad); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
-        .text-gradient-pink { background: var(--pink-grad); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
+/* --- Scroll Progress Bar --- */
+.scroll-progress {
+    position: fixed;
+    top: 0;
+    left: 0;
+    height: 3px;
+    background: linear-gradient(90deg, var(--nav-about), var(--nav-work), var(--nav-contact));
+    width: 0%;
+    z-index: 100;
+}
 
-        .marquee-container { overflow: hidden; white-space: nowrap; }
-        .marquee-content { display: inline-block; animation: marquee 20s linear infinite; }
-        @keyframes marquee { 0% { transform: translateX(0); } 100% { transform: translateX(-50%); } }
+/* --- Custom Cursor --- */
+.cursor-dot,
+.cursor-outline {
+    position: fixed;
+    top: 0;
+    left: 0;
+    transform: translate(-50%, -50%);
+    border-radius: 50%;
+    z-index: 9999;
+    pointer-events: none;
+}
 
-        .reveal-hero, .reveal-elem { transform: translateY(100%); opacity: 0; }
+.cursor-dot {
+    width: 8px;
+    height: 8px;
+    background-color: var(--cursor-color);
+    transition: background-color 0.3s;
+}
 
-        .project-card:hover .project-arrow { transform: translate(5px, -5px); }
-        .project-card:hover .project-image { transform: scale(1.05); }
-        
-        /* Theme Hover States */
-        .theme-cyan:hover .theme-text { color: var(--nav-about); }
-        .theme-cyan:hover .theme-border { border-color: var(--nav-about); color: var(--nav-about); }
-        .theme-purple:hover .theme-text { color: var(--nav-work); }
-        .theme-purple:hover .theme-border { border-color: var(--nav-work); color: var(--nav-work); }
-        .theme-pink:hover .theme-text { color: var(--accent-pink); }
-        .theme-pink:hover .theme-border { border-color: var(--accent-pink); color: var(--accent-pink); }
+.cursor-outline {
+    width: 40px;
+    height: 40px;
+    border: 2px solid var(--cursor-color);
+    opacity: 0.5;
+    transition: all 0.2s cubic-bezier(0.16, 1, 0.3, 1);
+}
 
-        /* --- Ambient Glows --- */
-        .ambient-glow {
-            position: absolute; width: 600px; height: 600px;
-            border-radius: 50%; 
-            filter: blur(180px); 
-            opacity: 0.15; 
-            z-index: -1; 
-            transition: background-color 5s ease, opacity 0.5s ease;
-        }
-        html.light .ambient-glow { opacity: 0.25; mix-blend-mode: multiply; filter: blur(150px); }
+body.hovering .cursor-outline {
+    width: 60px;
+    height: 60px;
+    background-color: var(--cursor-color);
+    opacity: 0.1;
+    border-color: transparent;
+}
 
-        /* --- Form Styling --- */
-        .form-input {
-            background: transparent;
-            border-bottom: 1px solid var(--border-color);
-            transition: border-color 0.3s ease;
-        }
-        .form-input:focus {
-            outline: none;
-            border-color: var(--nav-contact);
-        }
+/* --- Utilities --- */
+.text-gradient-cyan {
+    background: var(--cyan-grad);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
 
-        /* --- AUTOFILL FIX --- */
-        /* Forces the background to match the theme instead of browser default white */
-        input:-webkit-autofill,
-        input:-webkit-autofill:hover, 
-        input:-webkit-autofill:focus, 
-        textarea:-webkit-autofill,
-        textarea:-webkit-autofill:hover,
-        textarea:-webkit-autofill:focus {
-            -webkit-text-fill-color: var(--text-primary);
-            -webkit-box-shadow: 0 0 0px 1000px var(--bg-primary) inset;
-            transition: background-color 5000s ease-in-out 0s;
-        }
+.text-gradient-purple {
+    background: var(--purple-grad);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
 
-        /* Mobile Menu Styles */
-        #mobile-menu {
-            backdrop-filter: blur(20px);
-        }
+.text-gradient-pink {
+    background: var(--pink-grad);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
 
-        /* Responsive adjustments */
-        @media (max-width: 768px) {
-            .project-image img {
-                width: 100%;
-                height: 100%;
-                object-fit: cover;
-            }
+.marquee-container {
+    overflow: hidden;
+    white-space: nowrap;
+}
 
-            /* Fix text stroke on mobile */
-            h1 span[style*="text-stroke"] {
-                -webkit-text-stroke-width: 1px !important;
-            }
+.marquee-content {
+    display: inline-block;
+    animation: marquee 20s linear infinite;
+}
 
-            h2 span[style*="text-stroke"] {
-                -webkit-text-stroke-width: 1px !important;
-            }
+@keyframes marquee {
+    0% {
+        transform: translateX(0);
+    }
 
-            /* Better spacing for mobile */
-            nav {
-                padding-left: 1rem;
-                padding-right: 1rem;
-            }
+    100% {
+        transform: translateX(-50%);
+    }
+}
 
-            /* Ensure images don't overflow */
-            img {
-                max-width: 100%;
-                height: auto;
-            }
-        }
+.reveal-hero,
+.reveal-elem {
+    transform: translateY(100%);
+    opacity: 0;
+}
 
-        /* Tablet adjustments */
-        @media (min-width: 769px) and (max-width: 1024px) {
-            .project-image {
-                height: 350px !important;
-            }
-        }
+.project-card:hover .project-arrow {
+    transform: translate(5px, -5px);
+}
+
+.project-card:hover .project-image {
+    transform: scale(1.05);
+}
+
+/* Theme Hover States */
+.theme-cyan:hover .theme-text {
+    color: var(--nav-about);
+}
+
+.theme-cyan:hover .theme-border {
+    border-color: var(--nav-about);
+    color: var(--nav-about);
+}
+
+.theme-purple:hover .theme-text {
+    color: var(--nav-work);
+}
+
+.theme-purple:hover .theme-border {
+    border-color: var(--nav-work);
+    color: var(--nav-work);
+}
+
+.theme-pink:hover .theme-text {
+    color: var(--accent-pink);
+}
+
+.theme-pink:hover .theme-border {
+    border-color: var(--accent-pink);
+    color: var(--accent-pink);
+}
+
+/* --- Ambient Glows --- */
+.ambient-glow {
+    position: absolute;
+    width: 600px;
+    height: 600px;
+    max-width: 100vw;
+    border-radius: 50%;
+    filter: blur(180px);
+    opacity: 0.15;
+    z-index: -1;
+    transition: background-color 5s ease, opacity 0.5s ease;
+}
+
+html.light .ambient-glow {
+    opacity: 0.25;
+    mix-blend-mode: multiply;
+    filter: blur(150px);
+}
+
+/* --- Form Styling --- */
+.form-input {
+    background: transparent;
+    border-bottom: 1px solid var(--border-color);
+    transition: border-color 0.3s ease;
+}
+
+.form-input:focus {
+    outline: none;
+    border-color: var(--nav-contact);
+}
+
+/* --- AUTOFILL FIX --- */
+/* Forces the background to match the theme instead of browser default white */
+input:-webkit-autofill,
+input:-webkit-autofill:hover,
+input:-webkit-autofill:focus,
+textarea:-webkit-autofill,
+textarea:-webkit-autofill:hover,
+textarea:-webkit-autofill:focus {
+    -webkit-text-fill-color: var(--text-primary);
+    -webkit-box-shadow: 0 0 0px 1000px var(--bg-primary) inset;
+    transition: background-color 5000s ease-in-out 0s;
+}
+
+/* Mobile Menu Styles */
+#mobile-menu {
+    backdrop-filter: blur(20px);
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+    .project-image img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+    }
+
+    /* Fix text stroke on mobile */
+    h1 span[style*="text-stroke"] {
+        -webkit-text-stroke-width: 1px !important;
+    }
+
+    h2 span[style*="text-stroke"] {
+        -webkit-text-stroke-width: 1px !important;
+    }
+
+    /* Better spacing for mobile */
+    nav {
+        padding-left: 1rem;
+        padding-right: 1rem;
+    }
+
+    /* Ensure images don't overflow */
+    img {
+        max-width: 100%;
+        height: auto;
+    }
+}
+
+/* Tablet adjustments */
+@media (min-width: 769px) and (max-width: 1024px) {
+    .project-image {
+        height: 350px !important;
+    }
+}
