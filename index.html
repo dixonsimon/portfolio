@@ -35,7 +35,7 @@
     <div class="ambient-glow glow-2 bg-accent-purple top-[40%] right-[10%]"></div>
 
     <nav
-        class="fixed top-0 w-full px-4 md:px-8 py-4 md:py-6 flex justify-between items-center z-50 bg-bg/60 backdrop-blur-md transition-colors duration-300">
+        class="fixed top-4 left-1/2 -translate-x-1/2 w-[92%] max-w-6xl px-6 py-3 md:py-4 flex justify-between items-center z-50 bg-bg/60 backdrop-blur-md border border-border/50 rounded-full shadow-lg transition-all duration-300">
         <a href="#"
             class="brand-font font-black text-xl md:text-2xl tracking-tighter hover-trigger text-text relative group">
             DS<span class="text-accent-cyan">.</span>
@@ -105,7 +105,8 @@
         </div>
     </div>
 
-    <main class="smooth-wrapper">
+    <main class="smooth-wrapper relative">
+        <div class="grid-overlay pointer-events-none absolute inset-0 z-0"></div>
 
         <section class="min-h-screen flex flex-col justify-center px-4 md:px-20 pt-24 md:pt-20 relative">
             <div class="absolute top-1/4 right-4 md:right-32 text-right pointer-events-none">
@@ -182,6 +183,7 @@
                                 <li>Python & Java</li>
                                 <li>HTML / CSS / JS</li>
                                 <li>C / C++</li>
+                                <li>Unity & C#</li>
                                 <li>Git & GitHub</li>
                             </ul>
                         </div>
@@ -213,6 +215,87 @@
             </div>
 
             <div class="space-y-16 md:space-y-32">
+                <article class="project-card theme-purple group hover-trigger cursor-none">
+                    <a href="https://github.com/dixonsimon/Ashes-of-Outlaws" target="_blank"
+                        class="block grid md:grid-cols-12 gap-6 md:gap-8 items-center">
+                        <div
+                            class="md:col-span-7 project-image-container overflow-hidden rounded-2xl relative shadow-2xl shadow-accent-purple/5">
+                            <div
+                                class="project-image w-full h-[250px] md:h-[450px] bg-gradient-to-bl from-gray-800 to-gray-950 flex items-center justify-center transition-transform duration-700 relative">
+                                <img src="https://res.cloudinary.com/dccrbxfro/image/upload/v1780848444/game_c5ybeb.png"
+                                    alt="CGPA Calculator" class="w-full h-full object-cover">
+                            </div>
+                            <div
+                                class="absolute inset-0 bg-accent-purple/20 opacity-0 group-hover:opacity-100 transition-opacity duration-500 mix-blend-overlay">
+                            </div>
+                        </div>
+                        <div class="md:col-span-5 flex flex-col justify-center h-full py-4 md:pl-6 z-10">
+                            <div>
+                                <h3
+                                    class="theme-text text-3xl md:text-5xl font-bold mb-4 md:mb-6 transition-colors text-text">
+                                    Ashes of Outlaws</h3>
+                                <p class="text-text-muted mb-6 md:mb-8 leading-relaxed text-base md:text-lg">A modern,
+                                    Ashes of Outlaws is a premium 3rd-person Western action-adventure game built in
+                                    Unity 6 using the Universal Render Pipeline (URP). Take control of the Bandit
+                                    character as they traverse a atmospheric, stylized environment.</p>
+                                <div class="flex flex-wrap gap-2 md:gap-3 mb-6 md:mb-10">
+                                    <span
+                                        class="theme-border px-3 md:px-4 py-1.5 md:py-2 border border-border rounded-full text-xs md:text-sm uppercase tracking-wider font-medium transition-all text-text-muted">C#</span>
+                                    <span
+                                        class="theme-border px-3 md:px-4 py-1.5 md:py-2 border border-border rounded-full text-xs md:text-sm uppercase tracking-wider font-medium transition-all text-text-muted">Unity 6</span>
+                                    <span
+                                        class="theme-border px-3 md:px-4 py-1.5 md:py-2 border border-border rounded-full text-xs md:text-sm uppercase tracking-wider font-medium transition-all text-text-muted">URP</span>
+                                </div>
+                            </div>
+                            <div
+                                class="theme-text flex items-center gap-3 text-base md:text-lg uppercase tracking-widest font-bold transition-colors text-text">
+                                View Project <span class="project-arrow text-xl md:text-2xl">↗</span>
+                            </div>
+                        </div>
+                    </a>
+                </article>
+
+                <article class="project-card theme-pink group hover-trigger cursor-none">
+                    <a href="https://catchup-now.vercel.app/" target="_blank"
+                        class="block grid md:grid-cols-12 gap-6 md:gap-8 items-center">
+                        <div
+                            class="md:col-span-5 order-2 md:order-1 flex flex-col justify-center h-full py-4 md:pr-6 z-10 md:text-right">
+                            <div>
+                                <h3
+                                    class="theme-text text-3xl md:text-5xl font-bold mb-4 md:mb-6 transition-colors text-text">
+                                    Catch Up Now</h3>
+                                <p class="text-text-muted mb-6 md:mb-8 leading-relaxed text-base md:text-lg">The
+                                    ultimate
+                                    AI assistant that reads your calendar, calls, and notifications to automatically
+                                    curate and prioritize your daily tasks.</p>
+                                <div class="flex flex-wrap gap-2 md:gap-3 mb-6 md:mb-10 md:justify-end">
+                                    <span
+                                        class="theme-border px-3 md:px-4 py-1.5 md:py-2 border border-border rounded-full text-xs md:text-sm uppercase tracking-wider font-medium transition-all text-text-muted">Kotlin</span>
+                                    <span
+                                        class="theme-border px-3 md:px-4 py-1.5 md:py-2 border border-border rounded-full text-xs md:text-sm uppercase tracking-wider font-medium transition-all text-text-muted">Android SDK</span>
+                                    <span
+                                        class="theme-border px-3 md:px-4 py-1.5 md:py-2 border border-border rounded-full text-xs md:text-sm uppercase tracking-wider font-medium transition-all text-text-muted">Gemini API</span>
+                                </div>
+                            </div>
+                            <div
+                                class="theme-text flex items-center gap-3 text-base md:text-lg uppercase tracking-widest font-bold transition-colors text-text md:justify-end">
+                                View Project <span class="project-arrow text-xl md:text-2xl">↗</span>
+                            </div>
+                        </div>
+                        <div
+                            class="md:col-span-7 order-1 md:order-2 project-image-container overflow-hidden rounded-2xl relative shadow-2xl shadow-accent-pink/5">
+                            <div
+                                class="project-image w-full h-[250px] md:h-[450px] bg-gradient-to-br from-gray-800 to-gray-950 flex items-center justify-center transition-transform duration-700 relative">
+                                <img src="https://res.cloudinary.com/dccrbxfro/image/upload/v1780848545/screenshot-1780848534566_wlifck.png"
+                                    alt="Scientist Sandbox" class="w-full h-full object-cover">
+                            </div>
+                            <div
+                                class="absolute inset-0 bg-accent-pink/20 opacity-0 group-hover:opacity-100 transition-opacity duration-500 mix-blend-overlay">
+                            </div>
+                        </div>
+                    </a>
+                </article>
+
                 <article class="project-card theme-cyan group hover-trigger cursor-none">
                     <a href="https://github.com/dixonsimon/SOCSE-Chaiwala" target="_blank"
                         class="block grid md:grid-cols-12 gap-6 md:gap-8 items-center">
@@ -220,7 +303,6 @@
                             class="md:col-span-7 project-image-container overflow-hidden rounded-2xl relative shadow-2xl shadow-accent-cyan/5">
                             <div
                                 class="project-image w-full h-[250px] md:h-[450px] bg-gradient-to-br from-gray-800 to-gray-950 flex items-center justify-center transition-transform duration-700 relative">
-                                <div class="absolute inset-4 md:inset-10 border border-accent-cyan/30 rounded-xl"></div>
                                 <img src="https://res.cloudinary.com/dccrbxfro/image/upload/v1767798789/screenshot-1767798771232_xouogg.png"
                                     alt="SOCSE Chaiwala Homepage" class="w-full h-full object-cover">
                             </div>
@@ -237,7 +319,7 @@
                                     Chaiwala webpage is a fun and interactive web application designed to provide users
                                     with a unique experience centered around chai (tea) and academic vibes. It features
                                     a playful design, engaging animations, and a GPA calculator to help students manage
-                                    their academic performance.</p>
+                                    your academic performance.</p>
                                 <div class="flex flex-wrap gap-2 md:gap-3 mb-6 md:mb-10">
                                     <span
                                         class="theme-border px-3 md:px-4 py-1.5 md:py-2 border border-border rounded-full text-xs md:text-sm uppercase tracking-wider font-medium transition-all text-text-muted">HTML</span>
@@ -245,91 +327,6 @@
                                         class="theme-border px-3 md:px-4 py-1.5 md:py-2 border border-border rounded-full text-xs md:text-sm uppercase tracking-wider font-medium transition-all text-text-muted">CSS</span>
                                     <span
                                         class="theme-border px-3 md:px-4 py-1.5 md:py-2 border border-border rounded-full text-xs md:text-sm uppercase tracking-wider font-medium transition-all text-text-muted">JS</span>
-                                </div>
-                            </div>
-                            <div
-                                class="theme-text flex items-center gap-3 text-base md:text-lg uppercase tracking-widest font-bold transition-colors text-text">
-                                View Project <span class="project-arrow text-xl md:text-2xl">↗</span>
-                            </div>
-                        </div>
-                    </a>
-                </article>
-
-                <article class="project-card theme-purple group hover-trigger cursor-none">
-                    <a href="https://github.com/dixonsimon/CGPA-Calculator" target="_blank"
-                        class="block grid md:grid-cols-12 gap-6 md:gap-8 items-center">
-                        <div
-                            class="md:col-span-5 order-2 md:order-1 flex flex-col justify-center h-full py-4 md:pr-6 z-10 md:text-right">
-                            <div>
-                                <h3
-                                    class="theme-text text-3xl md:text-5xl font-bold mb-4 md:mb-6 transition-colors text-text">
-                                    CGPA Calculator</h3>
-                                <p class="text-text-muted mb-6 md:mb-8 leading-relaxed text-base md:text-lg">A modern,
-                                    interactive GPA calculator designed specifically for RV University's B.Sc (AI/ML)
-                                    students. Features a beautiful glass-morphism design with AI-powered performance
-                                    analysis to help students understand their academic performance and get personalized
-                                    improvement suggestions.</p>
-                                <div class="flex flex-wrap gap-2 md:gap-3 mb-6 md:mb-10 md:justify-end">
-                                    <span
-                                        class="theme-border px-3 md:px-4 py-1.5 md:py-2 border border-border rounded-full text-xs md:text-sm uppercase tracking-wider font-medium transition-all text-text-muted">JavaScript</span>
-                                    <span
-                                        class="theme-border px-3 md:px-4 py-1.5 md:py-2 border border-border rounded-full text-xs md:text-sm uppercase tracking-wider font-medium transition-all text-text-muted">HTML</span>
-                                </div>
-                            </div>
-                            <div
-                                class="theme-text flex items-center gap-3 text-base md:text-lg uppercase tracking-widest font-bold transition-colors text-text md:justify-end">
-                                View Project <span class="project-arrow text-xl md:text-2xl">↗</span>
-                            </div>
-                        </div>
-                        <div
-                            class="md:col-span-7 order-1 md:order-2 project-image-container overflow-hidden rounded-2xl relative shadow-2xl shadow-accent-purple/5">
-                            <div
-                                class="project-image w-full h-[250px] md:h-[450px] bg-gradient-to-bl from-gray-800 to-gray-950 flex items-center justify-center transition-transform duration-700 relative">
-                                <div class="absolute inset-4 md:inset-10 border border-accent-purple/30 rounded-xl">
-                                </div>
-                                <img src="https://res.cloudinary.com/dccrbxfro/image/upload/v1763567946/Screenshot_19-11-2025_212859_chaiwala-gpa.vercel.app_vhvz2f.jpg"
-                                    alt="CGPA Calculator" class="w-full h-full object-cover">
-                            </div>
-                            <div
-                                class="absolute inset-0 bg-accent-purple/20 opacity-0 group-hover:opacity-100 transition-opacity duration-500 mix-blend-overlay">
-                            </div>
-                        </div>
-                    </a>
-                </article>
-
-                <article class="project-card theme-pink group hover-trigger cursor-none">
-                    <a href="https://github.com/dixonsimon/Science-WebApp-Game-Prototype" target="_blank"
-                        class="block grid md:grid-cols-12 gap-6 md:gap-8 items-center">
-                        <div
-                            class="md:col-span-7 project-image-container overflow-hidden rounded-2xl relative shadow-2xl shadow-accent-pink/5">
-                            <div
-                                class="project-image w-full h-[250px] md:h-[450px] bg-gradient-to-br from-gray-800 to-gray-950 flex items-center justify-center transition-transform duration-700 relative">
-                                <div class="absolute inset-4 md:inset-10 border border-accent-pink/30 rounded-xl"></div>
-                                <img src="https://res.cloudinary.com/dccrbxfro/image/upload/v1758381634/Screenshot_20-9-2025_204921_science-web-game.vercel.app_sq8yy4.jpg"
-                                    alt="Scientist Sandbox" class="w-full h-full object-cover">
-                            </div>
-                            <div
-                                class="absolute inset-0 bg-accent-pink/20 opacity-0 group-hover:opacity-100 transition-opacity duration-500 mix-blend-overlay">
-                            </div>
-                        </div>
-                        <div class="md:col-span-5 flex flex-col justify-center h-full py-4 md:pl-6 z-10">
-                            <div>
-                                <h3
-                                    class="theme-text text-3xl md:text-5xl font-bold mb-4 md:mb-6 transition-colors text-text">
-                                    Scientist Sandbox</h3>
-                                <p class="text-text-muted mb-6 md:mb-8 leading-relaxed text-base md:text-lg">Field
-                                    Scientist Sandbox is a simple, browser-based 3D sandbox game built with Three.js.
-                                    Step into the role of a field scientist exploring a vast open field, collecting
-                                    various scientific samples like rocks, flowers, moss, and more. The game features
-                                    random sample generation for replayability, intuitive first-person controls, and a
-                                    research log.</p>
-                                <div class="flex flex-wrap gap-2 md:gap-3 mb-6 md:mb-10">
-                                    <span
-                                        class="theme-border px-3 md:px-4 py-1.5 md:py-2 border border-border rounded-full text-xs md:text-sm uppercase tracking-wider font-medium transition-all text-text-muted">JS</span>
-                                    <span
-                                        class="theme-border px-3 md:px-4 py-1.5 md:py-2 border border-border rounded-full text-xs md:text-sm uppercase tracking-wider font-medium transition-all text-text-muted">HTML</span>
-                                    <span
-                                        class="theme-border px-3 md:px-4 py-1.5 md:py-2 border border-border rounded-full text-xs md:text-sm uppercase tracking-wider font-medium transition-all text-text-muted">Three.js</span>
                                 </div>
                             </div>
                             <div
@@ -372,7 +369,7 @@
 
                         <div class="flex flex-wrap gap-3 md:gap-4 mt-6 md:mt-8">
                             <a href="https://github.com/dixonsimon"
-                                class="group relative overflow-hidden text-xs md:text-sm uppercase tracking-widest border border-border px-4 md:px-6 py-2.5 md:py-3 font-bold transition-all hover-trigger text-text magnetic-btn inline-block">
+                                class="group relative overflow-hidden text-xs md:text-sm uppercase tracking-widest border border-border px-4 md:px-6 py-2.5 md:py-3 font-bold transition-all hover-trigger text-text magnetic-btn inline-block rounded-xl">
                                 <div
                                     class="absolute inset-0 bg-github translate-y-full group-hover:translate-y-0 transition-transform duration-300 z-0">
                                 </div>
@@ -387,7 +384,7 @@
                                     <span class="relative z-10 group-hover:text-white transition-colors">GitHub</span>
                             </a>
                             <a href="https://www.linkedin.com/in/dixon-simon-a07699357/"
-                                class="group relative overflow-hidden text-xs md:text-sm uppercase tracking-widest border border-border px-4 md:px-6 py-2.5 md:py-3 font-bold transition-all hover-trigger text-text magnetic-btn inline-block">
+                                class="group relative overflow-hidden text-xs md:text-sm uppercase tracking-widest border border-border px-4 md:px-6 py-2.5 md:py-3 font-bold transition-all hover-trigger text-text magnetic-btn inline-block rounded-xl">
                                 <div
                                     class="absolute inset-0 bg-linkedin translate-y-full group-hover:translate-y-0 transition-transform duration-300 z-0">
                                 </div>
@@ -402,7 +399,7 @@
                                         class="relative z-10 group-hover:text-white transition-colors items-center gap-3">LinkedIn</span>
                             </a>
                             <a href="https://www.instagram.com/dixondoesstuff/"
-                                class="group relative overflow-hidden text-xs md:text-sm uppercase tracking-widest border border-border px-4 md:px-6 py-2.5 md:py-3 font-bold transition-all hover-trigger text-text magnetic-btn inline-block">
+                                class="group relative overflow-hidden text-xs md:text-sm uppercase tracking-widest border border-border px-4 md:px-6 py-2.5 md:py-3 font-bold transition-all hover-trigger text-text magnetic-btn inline-block rounded-xl">
                                 <div
                                     class="absolute inset-0 bg-instagram translate-y-full group-hover:translate-y-0 transition-transform duration-300 z-0">
                                 </div>
@@ -432,7 +429,7 @@
                             <label for="name"
                                 class="block text-xs uppercase tracking-widest text-text-muted mb-2 group-focus-within:text-accent-cyan transition-colors">Name</label>
                             <input type="text" name="name" id="name" required
-                                class="w-full form-input py-3 text-lg md:text-xl text-text placeholder-transparent"
+                                class="w-full form-input py-3 text-lg md:text-xl text-text placeholder-transparent focus:border-accent-cyan"
                                 placeholder="John Doe">
                         </div>
 
@@ -440,7 +437,7 @@
                             <label for="email"
                                 class="block text-xs uppercase tracking-widest text-text-muted mb-2 group-focus-within:text-accent-purple transition-colors">Email</label>
                             <input type="email" name="email" id="email" required
-                                class="w-full form-input py-3 text-lg md:text-xl text-text placeholder-transparent"
+                                class="w-full form-input py-3 text-lg md:text-xl text-text placeholder-transparent focus:border-accent-purple"
                                 placeholder="john@example.com">
                         </div>
 
@@ -448,12 +445,12 @@
                             <label for="message"
                                 class="block text-xs uppercase tracking-widest text-text-muted mb-2 group-focus-within:text-accent-pink transition-colors">Message</label>
                             <textarea name="message" id="message" rows="4" required
-                                class="w-full form-input py-3 text-lg md:text-xl text-text placeholder-transparent resize-none"
+                                class="w-full form-input py-3 text-lg md:text-xl text-text placeholder-transparent resize-none focus:border-accent-pink"
                                 placeholder="Hello..."></textarea>
                         </div>
 
                         <button type="submit"
-                            class="w-full magnetic-btn group relative overflow-hidden bg-text text-bg border border-text font-bold uppercase tracking-widest py-4 md:py-5 rounded-none transition-all hover:bg-bg hover:text-text hover-trigger text-sm md:text-base">
+                            class="w-full magnetic-btn group relative overflow-hidden bg-text text-bg border border-text font-bold uppercase tracking-widest py-4 md:py-5 rounded-xl transition-all hover:bg-bg hover:text-text hover-trigger text-sm md:text-base">
                             <span class="relative z-10">Send Message</span>
                         </button>
                     </form>

@@ -24,12 +24,19 @@ gsap.registerPlugin(ScrollTrigger, TextPlugin);
             }
         });
 
-        // --- Scroll Progress Bar ---
+        // --- Scroll Progress Bar & Nav Blur Dock ---
+        const nav = document.querySelector('nav');
         window.addEventListener('scroll', () => {
             const winScroll = document.body.scrollTop || document.documentElement.scrollTop;
             const height = document.documentElement.scrollHeight - document.documentElement.clientHeight;
             const scrolled = (winScroll / height) * 100;
             document.querySelector('.scroll-progress').style.width = scrolled + "%";
+            
+            if (winScroll > 40) {
+                nav.classList.add('nav-scrolled');
+            } else {
+                nav.classList.remove('nav-scrolled');
+            }
         });
 
         // --- Animations ---
