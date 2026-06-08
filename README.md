@@ -5,7 +5,7 @@
 
 Welcome to the repository for my personal portfolio website. This project was built from scratch to showcase my skills, projects, and passion for Artificial Intelligence and Machine Learning.
 
-<img width="1326" height="828" alt="image" src="https://res.cloudinary.com/dccrbxfro/image/upload/v1767968905/screenshot-1767968872321_mww7xx.png" />
+<img width="1326" height="828" alt="image" src="https://res.cloudinary.com/dccrbxfro/image/upload/v1780911375/screenshot-1780911314611_k9pkoe.png" />
 
 
 ### ✨ [Live Demo]
