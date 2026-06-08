@@ -8,10 +8,11 @@ tailwind.config = {
                         'text-muted': 'var(--text-secondary)',
                         border: 'var(--border-color)',
                         
-                        // Accents
+                                                // Accents
                         'accent-cyan': '#00f2fe',
                         'accent-purple': '#8f00ff',
                         'accent-pink': '#ff0080',
+                        'accent-yellow': '#facc15',
 
                         // Brand
                         linkedin: '#0077b5',

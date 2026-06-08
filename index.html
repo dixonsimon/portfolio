@@ -31,6 +31,9 @@
     <div class="cursor-dot"></div>
     <div class="cursor-outline"></div>
 
+    <!-- Interactive Particle Background Canvas -->
+    <canvas id="particle-canvas" class="fixed inset-0 w-full h-full pointer-events-none z-[1]"></canvas>
+
     <div class="ambient-glow glow-1 bg-accent-cyan top-[-20%] left-[0%]"></div>
     <div class="ambient-glow glow-2 bg-accent-purple top-[40%] right-[10%]"></div>
 
@@ -109,6 +112,22 @@
         <div class="grid-overlay pointer-events-none absolute inset-0 z-0"></div>
 
         <section class="min-h-screen flex flex-col justify-center px-4 md:px-20 pt-24 md:pt-20 relative">
+            <!-- Vertical HUD Coordinate Line -->
+            <div class="absolute left-4 md:left-10 top-1/3 bottom-1/3 w-[1px] bg-border/40 hidden md:block">
+                <span class="absolute -top-1.5 -left-1 w-2.5 h-2.5 rounded-full bg-accent-cyan/40 animate-ping"></span>
+                <span class="absolute -top-1 -left-[3px] w-1.5 h-1.5 rounded-full bg-accent-cyan"></span>
+                <span
+                    class="absolute top-4 -left-2 text-[9px] font-mono text-text-muted tracking-widest uppercase rotate-90 origin-top-left">LOC:
+                    12.97°N 77.59°E</span>
+
+                <span class="absolute -bottom-1 -left-[3px] w-1.5 h-1.5 rounded-full bg-accent-pink"></span>
+                <span
+                    class="absolute -bottom-1.5 -left-1 w-2.5 h-2.5 rounded-full bg-accent-pink/40 animate-ping"></span>
+                <span
+                    class="absolute bottom-4 -left-2 text-[9px] font-mono text-text-muted tracking-widest uppercase rotate-90 origin-top-left">SYS:
+                    ONLINE</span>
+            </div>
+
             <div class="absolute top-1/4 right-4 md:right-32 text-right pointer-events-none">
                 <p class="text-xs md:text-sm text-nav-about uppercase tracking-widest mb-2 reveal-elem font-bold">
                     Current Focus</p>
@@ -148,60 +167,118 @@
         </div>
 
         <section id="about"
-            class="py-16 md:py-32 px-4 md:px-20 grid md:grid-cols-12 gap-8 md:gap-12 relative z-20 bg-bg/80 backdrop-blur-sm transition-colors">
+            class="py-16 md:py-32 px-4 md:px-20 relative z-20 bg-bg/80 backdrop-blur-sm transition-colors">
 
-            <div class="md:col-span-4 flex flex-col">
-                <h2 class="text-sm uppercase tracking-widest text-nav-work font-bold mb-6 md:mb-8">01 / Profile</h2>
+            <h2 class="text-sm uppercase tracking-widest text-nav-work font-bold mb-6 md:mb-8">01 / Profile</h2>
 
-                <div
-                    class="rounded-2xl overflow-hidden relative shadow-2xl shadow-accent-purple/10 group w-full aspect-[4/5] md:aspect-[3/4] max-w-sm md:max-w-none mx-auto md:mx-0">
+            <div class="grid md:grid-cols-12 gap-8 md:gap-12">
+                <div class="md:col-span-4 flex flex-col">
                     <div
-                        class="absolute inset-0 bg-nav-work/10 mix-blend-overlay z-10 transition-opacity duration-500 group-hover:opacity-0">
-                    </div>
-
-                    <img src="https://res.cloudinary.com/dccrbxfro/image/upload/v1757848034/unnamed_1_otkbec.png"
-                        alt="Dixon Simon"
-                        class="w-full h-full object-cover transform transition-transform duration-700 group-hover:scale-110 opacity-80 hover:opacity-100">
-                </div>
-            </div>
-
-            <div class="md:col-span-8">
-                <div class="mt-8 md:mt-32">
-                    <p
-                        class="brand-font text-2xl md:text-5xl font-bold leading-tight mb-12 md:mb-16 scroll-reveal text-text">
-                        I'm an undergraduate specializing in <span class="text-gradient-purple">AIML</span> based in
-                        Bangalore. My academic journey is fueled by a passion for leveraging algorithms to solve
-                        real-world problems.
-                    </p>
-
-                    <div class="grid grid-cols-1 sm:grid-cols-2 gap-8 md:gap-12">
-                        <div>
-                            <h3
-                                class="text-lg md:text-xl font-bold mb-4 md:mb-6 pb-2 inline-block text-text border-b-2 border-nav-work">
-                                Tech Stack</h3>
-                            <ul class="space-y-2 md:space-y-3 text-text-muted font-light text-base md:text-lg">
-                                <li>Python & Java</li>
-                                <li>HTML / CSS / JS</li>
-                                <li>C / C++</li>
-                                <li>Unity & C#</li>
-                                <li>Git & GitHub</li>
-                            </ul>
+                        class="rounded-2xl overflow-hidden relative shadow-2xl shadow-accent-pink/10 group w-full aspect-[4/5] md:aspect-[3/4] max-w-sm md:max-w-none mx-auto md:mx-0">
+                        <div
+                            class="absolute inset-0 bg-nav-work/10 mix-blend-overlay z-10 transition-opacity duration-500 group-hover:opacity-0">
                         </div>
-                        <div>
-                            <h3
-                                class="text-lg md:text-xl font-bold mb-4 md:mb-6 pb-2 inline-block text-text border-b-2 border-nav-about">
-                                Focus Areas</h3>
-                            <ul class="space-y-2 md:space-y-3 text-text-muted font-light text-base md:text-lg">
-                                <li>Machine Learning</li>
-                                <li>Web Development</li>
-                                <li>Data Structures</li>
-                                <li>UI/UX (Figma)</li>
-                            </ul>
+
+                        <img src="https://res.cloudinary.com/dccrbxfro/image/upload/v1757848034/unnamed_1_otkbec.png"
+                            alt="Dixon Simon"
+                            class="w-full h-full object-cover transform transition-transform duration-700 group-hover:scale-110 opacity-80 hover:opacity-100">
+                    </div>
+                </div>
+
+                <div class="md:col-span-8 mt-8 md:mt-0">
+                    <div>
+                        <p
+                            class="brand-font text-2xl md:text-5xl font-bold leading-tight mb-12 md:mb-16 scroll-reveal text-text">
+                            I'm an undergraduate specializing in <span class="text-gradient-pink">AIML</span> based in
+                            Bangalore. My academic journey is fueled by a passion for leveraging algorithms to solve
+                            real-world problems.
+                        </p>
+
+                        <div class="grid grid-cols-1 sm:grid-cols-2 gap-6 md:gap-8 mt-8">
+                            <!-- Bento Card 1: Tech Stack (Minecraft Chiseled Design) -->
+                            <div class="minecraft-chiseled relative overflow-hidden p-10 md:p-12 bg-bg/40 backdrop-blur-md group"
+                                style="--spotlight-color: var(--accent-yellow-rgb); --accent-hover-color: var(--accent-yellow);">
+                                <!-- Card spotlight glow -->
+                                <div
+                                    class="absolute inset-0 bg-gradient-to-br from-accent-yellow/5 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500 pointer-events-none">
+                                </div>
+
+                                <h3
+                                    class="text-lg md:text-2xl font-bold mb-6 flex items-center justify-between text-text border-b border-border/50 pb-3">
+                                    <span>Tech Stack</span>
+                                </h3>
+                                <ul class="space-y-3 font-mono text-xs md:text-sm">
+                                    <li
+                                        class="minecraft-slot flex items-center gap-3 px-4 py-3 text-text-muted hover:text-text transition-colors">
+                                        <span class="w-2 h-2 bg-accent-yellow"></span>
+                                        <span>Python & Java</span>
+                                    </li>
+                                    <li
+                                        class="minecraft-slot flex items-center gap-3 px-4 py-3 text-text-muted hover:text-text transition-colors">
+                                        <span class="w-2 h-2 bg-accent-yellow"></span>
+                                        <span>Web Dev (HTML/JS)</span>
+                                    </li>
+                                    <li
+                                        class="minecraft-slot flex items-center gap-3 px-4 py-3 text-text-muted hover:text-text transition-colors">
+                                        <span class="w-2 h-2 bg-accent-yellow"></span>
+                                        <span>C / C++</span>
+                                    </li>
+                                    <li
+                                        class="minecraft-slot flex items-center gap-3 px-4 py-3 text-text-muted hover:text-text transition-colors">
+                                        <span class="w-2 h-2 bg-accent-yellow"></span>
+                                        <span>Unity & C#</span>
+                                    </li>
+                                    <li
+                                        class="minecraft-slot flex items-center gap-3 px-4 py-3 text-text-muted hover:text-text transition-colors">
+                                        <span class="w-2 h-2 bg-accent-yellow"></span>
+                                        <span>Git & GitHub</span>
+                                    </li>
+                                </ul>
+                            </div>
+
+                            <!-- Bento Card 2: Focus Areas (Minecraft Chiseled Design) -->
+                            <div class="minecraft-chiseled relative overflow-hidden p-10 md:p-12 bg-bg/40 backdrop-blur-md group"
+                                style="--spotlight-color: var(--accent-cyan-rgb); --accent-hover-color: var(--accent-cyan);">
+                                <!-- Card spotlight glow -->
+                                <div
+                                    class="absolute inset-0 bg-gradient-to-br from-accent-cyan/5 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500 pointer-events-none">
+                                </div>
+
+                                <h3
+                                    class="text-lg md:text-2xl font-bold mb-6 flex items-center justify-between text-text border-b border-border/50 pb-3">
+                                    <span>Focus Areas</span>
+                                </h3>
+                                <ul class="space-y-3 font-mono text-xs md:text-sm">
+                                    <li
+                                        class="minecraft-slot flex items-center gap-3 px-4 py-3 text-text-muted hover:text-text transition-colors">
+                                        <span class="w-2 h-2 bg-accent-cyan animate-pulse"></span>
+                                        <span>Machine Learning</span>
+                                    </li>
+                                    <li
+                                        class="minecraft-slot flex items-center gap-3 px-4 py-3 text-text-muted hover:text-text transition-colors">
+                                        <span class="w-2 h-2 bg-accent-cyan"></span>
+                                        <span>Web Design</span>
+                                    </li>
+                                    <li
+                                        class="minecraft-slot flex items-center gap-3 px-4 py-3 text-text-muted hover:text-text transition-colors">
+                                        <span class="w-2 h-2 bg-accent-cyan"></span>
+                                        <span>Data Structures</span>
+                                    </li>
+                                    <li
+                                        class="minecraft-slot flex items-center gap-3 px-4 py-3 text-text-muted hover:text-text transition-colors">
+                                        <span class="w-2 h-2 bg-accent-cyan"></span>
+                                        <span>UI/UX Design (Figma)</span>
+                                    </li>
+                                </ul>
+                            </div>
                         </div>
                     </div>
                 </div>
             </div>
         </section>
+
+        <!-- Interactive Scan-Line Separator -->
+        <div class="scan-line w-full opacity-60 z-20 relative"></div>
 
         <section id="projects" class="py-12 md:py-20 px-4 md:px-20 relative z-20">
             <div
@@ -215,19 +292,20 @@
             </div>
 
             <div class="space-y-16 md:space-y-32">
-                <article class="project-card theme-purple group hover-trigger cursor-none">
+                <article class="project-card theme-yellow group hover-trigger cursor-none">
                     <a href="https://github.com/dixonsimon/Ashes-of-Outlaws" target="_blank"
                         class="block grid md:grid-cols-12 gap-6 md:gap-8 items-center">
                         <div
-                            class="md:col-span-7 project-image-container overflow-hidden rounded-2xl relative shadow-2xl shadow-accent-purple/5">
+                            class="md:col-span-7 project-image-container overflow-hidden rounded-2xl relative shadow-2xl shadow-accent-yellow/5">
                             <div
-                                class="project-image w-full h-[250px] md:h-[450px] bg-gradient-to-bl from-gray-800 to-gray-950 flex items-center justify-center transition-transform duration-700 relative">
+                                class="project-image w-full h-[250px] md:h-[450px] bg-gradient-to-bl from-gray-800 to-gray-950 flex items-center justify-center relative">
                                 <img src="https://res.cloudinary.com/dccrbxfro/image/upload/v1780848444/game_c5ybeb.png"
                                     alt="CGPA Calculator" class="w-full h-full object-cover">
                             </div>
                             <div
-                                class="absolute inset-0 bg-accent-purple/20 opacity-0 group-hover:opacity-100 transition-opacity duration-500 mix-blend-overlay">
+                                class="absolute inset-0 bg-accent-yellow/10 opacity-0 group-hover:opacity-100 transition-opacity duration-500 mix-blend-overlay">
                             </div>
+                            <div class="glossy-sheen"></div>
                         </div>
                         <div class="md:col-span-5 flex flex-col justify-center h-full py-4 md:pl-6 z-10">
                             <div>
@@ -242,7 +320,8 @@
                                     <span
                                         class="theme-border px-3 md:px-4 py-1.5 md:py-2 border border-border rounded-full text-xs md:text-sm uppercase tracking-wider font-medium transition-all text-text-muted">C#</span>
                                     <span
-                                        class="theme-border px-3 md:px-4 py-1.5 md:py-2 border border-border rounded-full text-xs md:text-sm uppercase tracking-wider font-medium transition-all text-text-muted">Unity 6</span>
+                                        class="theme-border px-3 md:px-4 py-1.5 md:py-2 border border-border rounded-full text-xs md:text-sm uppercase tracking-wider font-medium transition-all text-text-muted">Unity
+                                        6</span>
                                     <span
                                         class="theme-border px-3 md:px-4 py-1.5 md:py-2 border border-border rounded-full text-xs md:text-sm uppercase tracking-wider font-medium transition-all text-text-muted">URP</span>
                                 </div>
@@ -272,9 +351,11 @@
                                     <span
                                         class="theme-border px-3 md:px-4 py-1.5 md:py-2 border border-border rounded-full text-xs md:text-sm uppercase tracking-wider font-medium transition-all text-text-muted">Kotlin</span>
                                     <span
-                                        class="theme-border px-3 md:px-4 py-1.5 md:py-2 border border-border rounded-full text-xs md:text-sm uppercase tracking-wider font-medium transition-all text-text-muted">Android SDK</span>
+                                        class="theme-border px-3 md:px-4 py-1.5 md:py-2 border border-border rounded-full text-xs md:text-sm uppercase tracking-wider font-medium transition-all text-text-muted">Android
+                                        SDK</span>
                                     <span
-                                        class="theme-border px-3 md:px-4 py-1.5 md:py-2 border border-border rounded-full text-xs md:text-sm uppercase tracking-wider font-medium transition-all text-text-muted">Gemini API</span>
+                                        class="theme-border px-3 md:px-4 py-1.5 md:py-2 border border-border rounded-full text-xs md:text-sm uppercase tracking-wider font-medium transition-all text-text-muted">Gemini
+                                        API</span>
                                 </div>
                             </div>
                             <div
@@ -285,13 +366,14 @@
                         <div
                             class="md:col-span-7 order-1 md:order-2 project-image-container overflow-hidden rounded-2xl relative shadow-2xl shadow-accent-pink/5">
                             <div
-                                class="project-image w-full h-[250px] md:h-[450px] bg-gradient-to-br from-gray-800 to-gray-950 flex items-center justify-center transition-transform duration-700 relative">
+                                class="project-image w-full h-[250px] md:h-[450px] bg-gradient-to-br from-gray-800 to-gray-950 flex items-center justify-center relative">
                                 <img src="https://res.cloudinary.com/dccrbxfro/image/upload/v1780848545/screenshot-1780848534566_wlifck.png"
                                     alt="Scientist Sandbox" class="w-full h-full object-cover">
                             </div>
                             <div
-                                class="absolute inset-0 bg-accent-pink/20 opacity-0 group-hover:opacity-100 transition-opacity duration-500 mix-blend-overlay">
+                                class="absolute inset-0 bg-accent-pink/10 opacity-0 group-hover:opacity-100 transition-opacity duration-500 mix-blend-overlay">
                             </div>
+                            <div class="glossy-sheen"></div>
                         </div>
                     </a>
                 </article>
@@ -302,13 +384,14 @@
                         <div
                             class="md:col-span-7 project-image-container overflow-hidden rounded-2xl relative shadow-2xl shadow-accent-cyan/5">
                             <div
-                                class="project-image w-full h-[250px] md:h-[450px] bg-gradient-to-br from-gray-800 to-gray-950 flex items-center justify-center transition-transform duration-700 relative">
+                                class="project-image w-full h-[250px] md:h-[450px] bg-gradient-to-br from-gray-800 to-gray-950 flex items-center justify-center relative">
                                 <img src="https://res.cloudinary.com/dccrbxfro/image/upload/v1767798789/screenshot-1767798771232_xouogg.png"
                                     alt="SOCSE Chaiwala Homepage" class="w-full h-full object-cover">
                             </div>
                             <div
-                                class="absolute inset-0 bg-accent-cyan/20 opacity-0 group-hover:opacity-100 transition-opacity duration-500 mix-blend-overlay">
+                                class="absolute inset-0 bg-accent-cyan/10 opacity-0 group-hover:opacity-100 transition-opacity duration-500 mix-blend-overlay">
                             </div>
+                            <div class="glossy-sheen"></div>
                         </div>
                         <div class="md:col-span-5 flex flex-col justify-center h-full py-4 md:pl-6 z-10">
                             <div>
@@ -464,6 +547,23 @@
                 <span class="text-center sm:text-right">Crafted with Code & A.Intelligence</span>
             </div>
         </section>
+
+        <!-- Floating Scroll to Top HUD widget -->
+        <button id="scroll-to-top"
+            class="fixed bottom-6 right-6 z-50 flex items-center justify-center w-12 h-12 rounded-full bg-bg/80 border border-border backdrop-blur-md text-text opacity-0 pointer-events-none transition-all duration-300 hover:border-accent-cyan hover:shadow-lg hover:shadow-accent-cyan/25 group hover:scale-105"
+            aria-label="Scroll to top">
+            <svg class="w-12 h-12 absolute -rotate-90 pointer-events-none" viewBox="0 0 100 100">
+                <circle class="text-border/20" stroke-width="4" stroke="currentColor" fill="transparent" r="40" cx="50"
+                    cy="50" />
+                <circle id="scroll-progress-circle" class="text-accent-cyan" stroke-width="4" stroke-dasharray="251.2"
+                    stroke-dashoffset="251.2" stroke-linecap="round" stroke="currentColor" fill="transparent" r="40"
+                    cx="50" cy="50" />
+            </svg>
+            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2.5"
+                stroke="currentColor" class="w-5 h-5 transition-transform duration-300 group-hover:-translate-y-1">
+                <path stroke-linecap="round" stroke-linejoin="round" d="M4.5 15.75l7.5-7.5 7.5 7.5" />
+            </svg>
+        </button>
 
     </main>
 

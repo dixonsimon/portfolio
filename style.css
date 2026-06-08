@@ -1,4 +1,4 @@
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                            :root {
+    :root {
     /* Dark Mode Defaults */
     --bg-primary: #050505;
     --text-primary: #ffffff;
@@ -11,57 +11,67 @@
     --nav-work: #ff0080;
     --nav-contact: #facc15;
 
+    --accent-cyan: #00f2fe;
+    --accent-purple: #8f00ff;
+    --accent-pink: #ff0080;
+    --accent-yellow: #facc15;
+
+    --accent-cyan-rgb: 0, 242, 254;
+    --accent-purple-rgb: 143, 0, 255;
+    --accent-pink-rgb: 255, 0, 128;
+    --accent-yellow-rgb: 250, 204, 21;
+
     --cyan-grad: linear-gradient(to right, #00f2fe, #4facfe);
     --purple-grad: linear-gradient(to right, #8f00ff, #e100ff);
     --pink-grad: linear-gradient(to right, #ff0080, #ff5c9d);
-}
+    }
 
-/* Light Mode Overrides */
-html.light {
+    /* Light Mode Overrides */
+    html.light {
     --bg-primary: #ffffff;
     --text-primary: #0a0a0a;
     --text-secondary: #52525b;
     --border-color: rgba(0, 0, 0, 0.1);
     --cursor-color: #000000;
     --stroke-color: rgba(0, 0, 0, 0.5);
-}
+    }
 
-html,
-body {
+    html,
+    body {
     overflow-x: hidden;
     width: 100%;
     max-width: 100%;
-}
+    }
 
-body {
+    body {
     font-family: 'Inter', sans-serif;
     cursor: none;
     background-color: var(--bg-primary);
     color: var(--text-primary);
     transition: background-color 0.5s cubic-bezier(0.16, 1, 0.3, 1), color 0.5s cubic-bezier(0.16, 1, 0.3, 1);
-}
+    }
 
-/* Mobile cursor fix */
-@media (hover: none) and (pointer: coarse) {
+    /* Mobile cursor fix */
+    @media (hover: none) and (pointer: coarse) {
     body {
-        cursor: auto;
+    cursor: auto;
     }
 
     .cursor-dot,
     .cursor-outline {
-        display: none !important;
+    display: none !important;
     }
-}
+    }
 
-h1,
-h2,
-h3,
-.brand-font {
+    h1,
+    h2,
+    h3,
+    .brand-font {
     font-family: 'Syne', sans-serif;
-}
+    }
 
-/* --- Scroll Progress Bar --- */
-.scroll-progress {
+    /* --- Scroll Progress Bar --- */
+    .scroll-progress {
     position: fixed;
     top: 0;
     left: 0;
@@ -69,11 +79,11 @@ h3,
     background: linear-gradient(90deg, var(--nav-about), var(--nav-work), var(--nav-contact));
     width: 0%;
     z-index: 100;
-}
+    }
 
-/* --- Custom Cursor --- */
-.cursor-dot,
-.cursor-outline {
+    /* --- Custom Cursor --- */
+    .cursor-dot,
+    .cursor-outline {
     position: fixed;
     top: 0;
     left: 0;
@@ -82,122 +92,130 @@ h3,
     z-index: 9999;
     pointer-events: none;
     mix-blend-mode: difference;
-}
+    }
 
-.cursor-dot {
+    .cursor-dot {
     width: 6px;
     height: 6px;
     background-color: #ffffff;
     transition: background-color 0.3s;
-}
+    }
 
-.cursor-outline {
+    .cursor-outline {
     width: 36px;
     height: 36px;
     border: 1.5px solid #ffffff;
     opacity: 0.8;
     transition: width 0.3s, height 0.3s, background-color 0.3s, border-color 0.3s, opacity 0.3s;
-}
+    }
 
-body.hovering .cursor-outline {
+    body.hovering .cursor-outline {
     width: 56px;
     height: 56px;
     background-color: #ffffff;
     opacity: 0.2;
     border-color: transparent;
-}
+    }
 
-/* --- Utilities --- */
-.text-gradient-cyan {
+    /* --- Utilities --- */
+    .text-gradient-cyan {
     background: var(--cyan-grad);
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
-}
+    }
 
-.text-gradient-purple {
+    .text-gradient-purple {
     background: var(--purple-grad);
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
-}
+    }
 
-.text-gradient-pink {
+    .text-gradient-pink {
     background: var(--pink-grad);
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
-}
+    }
 
-.marquee-container {
+    .marquee-container {
     overflow: hidden;
     white-space: nowrap;
-}
+    }
 
-.marquee-content {
+    .marquee-content {
     display: inline-block;
     animation: marquee 20s linear infinite;
-}
+    }
 
-@keyframes marquee {
+    @keyframes marquee {
     0% {
-        transform: translateX(0);
+    transform: translateX(0);
     }
 
     100% {
-        transform: translateX(-50%);
+    transform: translateX(-50%);
     }
-}
+    }
 
-.reveal-hero,
-.reveal-elem {
+    .reveal-hero,
+    .reveal-elem {
     transform: translateY(100%);
     opacity: 0;
-}
+    }
 
-.project-card:hover .project-arrow {
+    .project-card:hover .project-arrow {
     transform: translate(5px, -5px);
-}
+    }
 
-.project-card:hover .project-image {
-    transform: scale(1.05);
-}
 
-/* Theme Hover States */
-.theme-cyan:hover .theme-text {
-    color: var(--nav-about);
-}
 
-.theme-cyan:hover .theme-border {
-    border-color: var(--nav-about);
-    color: var(--nav-about);
+    /* Theme Hover States */
+    .theme-cyan:hover .theme-text {
+    color: var(--accent-cyan);
+    }
+
+    .theme-cyan:hover .theme-border {
+    border-color: var(--accent-cyan);
+    color: var(--accent-cyan);
     background-color: rgba(0, 242, 254, 0.08);
-}
+    }
 
-.theme-purple:hover .theme-text {
-    color: var(--nav-work);
-}
+    .theme-purple:hover .theme-text {
+    color: var(--accent-purple);
+    }
 
-.theme-purple:hover .theme-border {
-    border-color: var(--nav-work);
-    color: var(--nav-work);
+    .theme-purple:hover .theme-border {
+    border-color: var(--accent-purple);
+    color: var(--accent-purple);
     background-color: rgba(143, 0, 255, 0.08);
-}
+    }
 
-.theme-pink:hover .theme-text {
+    .theme-pink:hover .theme-text {
     color: var(--accent-pink);
-}
+    }
 
-.theme-pink:hover .theme-border {
+    .theme-pink:hover .theme-border {
     border-color: var(--accent-pink);
     color: var(--accent-pink);
     background-color: rgba(255, 0, 128, 0.08);
-}
+    }
 
-/* --- Project Image Container Hover Glow & Lift --- */
-.project-image-container {
+    .theme-yellow:hover .theme-text {
+    color: var(--accent-yellow);
+    }
+
+    .theme-yellow:hover .theme-border {
+    border-color: var(--accent-yellow);
+    color: var(--accent-yellow);
+    background-color: rgba(250, 204, 21, 0.08);
+    }
+
+    /* --- Project Image Container Hover Glow & Lift --- */
+    .project-image-container {
     position: relative;
-    transition: transform 0.5s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.5s cubic-bezier(0.16, 1, 0.3, 1);
-}
+    transition: box-shadow 0.5s cubic-bezier(0.16, 1, 0.3, 1);
+    }
 
-.project-image-container::before {
+    .project-image-container::before {
     content: '';
     position: absolute;
     inset: -10px;
@@ -206,32 +224,73 @@ body.hovering .cursor-outline {
     opacity: 0;
     transition: opacity 0.5s cubic-bezier(0.16, 1, 0.3, 1), filter 0.5s cubic-bezier(0.16, 1, 0.3, 1);
     pointer-events: none;
-}
+    }
 
-.theme-cyan:hover .project-image-container::before {
-    background: radial-gradient(circle, rgba(0, 242, 254, 0.25) 0%, transparent 70%);
+    .theme-cyan:hover .project-image-container::before {
+    background: radial-gradient(circle, rgba(0, 242, 254, 0.10) 0%, transparent 70%);
     filter: blur(24px);
     opacity: 1;
-}
+    }
 
-.theme-purple:hover .project-image-container::before {
-    background: radial-gradient(circle, rgba(143, 0, 255, 0.25) 0%, transparent 70%);
+    .theme-purple:hover .project-image-container::before {
+    background: radial-gradient(circle, rgba(143, 0, 255, 0.10) 0%, transparent 70%);
     filter: blur(24px);
     opacity: 1;
-}
+    }
 
-.theme-pink:hover .project-image-container::before {
-    background: radial-gradient(circle, rgba(255, 0, 128, 0.25) 0%, transparent 70%);
+    .theme-pink:hover .project-image-container::before {
+    background: radial-gradient(circle, rgba(255, 0, 128, 0.10) 0%, transparent 70%);
     filter: blur(24px);
     opacity: 1;
-}
+    }
 
-.project-card:hover .project-image-container {
-    transform: translateY(-8px);
-}
+    .theme-yellow:hover .project-image-container::before {
+    background: radial-gradient(circle, rgba(250, 204, 21, 0.10) 0%, transparent 70%);
+    filter: blur(24px);
+    opacity: 1;
+    }
 
-/* --- Ambient Glows --- */
-.ambient-glow {
+    /* --- Glossy Sheen Reflection Overlay --- */
+    .glossy-sheen {
+    position: absolute;
+    inset: 0;
+    pointer-events: none;
+    z-index: 15;
+    background: radial-gradient(circle 250px at var(--sheen-x, 50%) var(--sheen-y, 50%), rgba(255, 255, 255, 0.18) 0%, rgba(255, 255, 255, 0) 80%);
+    mix-blend-mode: overlay;
+    transition: opacity 0.5s ease;
+    overflow: hidden;
+    border-radius: inherit;
+    }
+
+    .glossy-sheen::after {
+    content: '';
+    position: absolute;
+    top: -100%;
+    left: -100%;
+    width: 300%;
+    height: 300%;
+    background: linear-gradient(
+    45deg,
+    rgba(255, 255, 255, 0) 0%,
+    rgba(255, 255, 255, 0) 40%,
+    rgba(255, 255, 255, 0.12) 45%,
+    rgba(255, 255, 255, 0.28) 50%,
+    rgba(255, 255, 255, 0.12) 55%,
+    rgba(255, 255, 255, 0) 60%,
+    rgba(255, 255, 255, 0) 100%
+    );
+    transform: translate(-30%, -30%) rotate(25deg);
+    transition: transform 0.8s cubic-bezier(0.16, 1, 0.3, 1);
+    pointer-events: none;
+    }
+
+    .project-card:hover .glossy-sheen::after {
+    transform: translate(30%, 30%) rotate(25deg);
+    }
+
+    /* --- Ambient Glows --- */
+    .ambient-glow {
     position: absolute;
     width: 600px;
     height: 600px;
@@ -241,51 +300,51 @@ body.hovering .cursor-outline {
     opacity: 0.15;
     z-index: -1;
     transition: background-color 5s ease, opacity 0.5s ease;
-}
+    }
 
-html.light .ambient-glow {
+    html.light .ambient-glow {
     opacity: 0.25;
     mix-blend-mode: multiply;
     filter: blur(150px);
-}
+    }
 
-/* --- Form Styling --- */
-.form-input {
+    /* --- Form Styling --- */
+    .form-input {
     background: transparent;
     border-bottom: 1.5px solid var(--border-color);
     transition: border-color 0.4s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.4s cubic-bezier(0.16, 1, 0.3, 1);
-}
+    }
 
-.form-input:focus {
+    .form-input:focus {
     outline: none;
     box-shadow: 0 4px 20px -5px rgba(255, 255, 255, 0.05);
-}
+    }
 
-html.light .form-input:focus {
+    html.light .form-input:focus {
     box-shadow: 0 4px 20px -5px rgba(0, 0, 0, 0.05);
-}
+    }
 
-/* --- AUTOFILL FIX --- */
-/* Forces the background to match the theme instead of browser default white */
-input:-webkit-autofill,
-input:-webkit-autofill:hover,
-input:-webkit-autofill:focus,
-textarea:-webkit-autofill,
-textarea:-webkit-autofill:hover,
-textarea:-webkit-autofill:focus {
+    /* --- AUTOFILL FIX --- */
+    /* Forces the background to match the theme instead of browser default white */
+    input:-webkit-autofill,
+    input:-webkit-autofill:hover,
+    input:-webkit-autofill:focus,
+    textarea:-webkit-autofill,
+    textarea:-webkit-autofill:hover,
+    textarea:-webkit-autofill:focus {
     -webkit-text-fill-color: var(--text-primary);
     -webkit-box-shadow: 0 0 0px 1000px var(--bg-primary) inset;
     transition: background-color 5000s ease-in-out 0s;
-}
+    }
 
-/* Mobile Menu Styles */
-#mobile-menu {
+    /* Mobile Menu Styles */
+    #mobile-menu {
     backdrop-filter: blur(20px);
-}
+    }
 
-/* --- Radial Grid Background Pattern --- */
-.grid-overlay {
-    position: absolute;
+    /* --- Radial Grid Background Pattern --- */
+    .grid-overlay {
+    position: fixed;
     inset: 0;
     width: 100%;
     height: 100%;
@@ -293,22 +352,21 @@ textarea:-webkit-autofill:focus {
     z-index: 0;
     background-image: radial-gradient(rgba(255, 255, 255, 0.08) 1px, transparent 1px);
     background-size: 32px 32px;
-    mask-image: radial-gradient(circle at 50% 25%, black 20%, transparent 80%);
-    -webkit-mask-image: radial-gradient(circle at 50% 25%, black 20%, transparent 80%);
-    opacity: 0.6;
-}
+    opacity: 0.65;
+    transition: opacity 0.5s ease;
+    }
 
-html.light .grid-overlay {
+    html.light .grid-overlay {
     background-image: radial-gradient(rgba(0, 0, 0, 0.05) 1px, transparent 1px);
-    opacity: 0.7;
-}
+    opacity: 0.75;
+    }
 
-/* --- Navigation Scrolled Dock --- */
-nav {
+    /* --- Navigation Scrolled Dock --- */
+    nav {
     transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
-}
+    }
 
-nav.nav-scrolled {
+    nav.nav-scrolled {
     top: 1rem;
     padding-top: 0.6rem;
     padding-bottom: 0.6rem;
@@ -316,48 +374,345 @@ nav.nav-scrolled {
     backdrop-filter: blur(20px) saturate(180%);
     box-shadow: 0 10px 30px -10px rgba(0, 0, 0, 0.5);
     border-color: rgba(255, 255, 255, 0.12);
-}
+    }
 
-html.light nav.nav-scrolled {
+    html.light nav.nav-scrolled {
     background-color: rgba(255, 255, 255, 0.75);
     box-shadow: 0 10px 30px -10px rgba(0, 0, 0, 0.08);
     border-color: rgba(0, 0, 0, 0.08);
-}
+    }
 
-/* Responsive adjustments */
-@media (max-width: 768px) {
+    /* Responsive adjustments */
+    @media (max-width: 768px) {
     .project-image img {
-        width: 100%;
-        height: 100%;
-        object-fit: cover;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
     }
 
     /* Fix text stroke on mobile */
     h1 span[style*="text-stroke"] {
-        -webkit-text-stroke-width: 1px !important;
+    -webkit-text-stroke-width: 1px !important;
     }
 
     h2 span[style*="text-stroke"] {
-        -webkit-text-stroke-width: 1px !important;
+    -webkit-text-stroke-width: 1px !important;
     }
 
     /* Better spacing for mobile */
     nav {
-        padding-left: 1.25rem;
-        padding-right: 1.25rem;
-        width: 95%;
+    padding-left: 1.25rem;
+    padding-right: 1.25rem;
+    width: 95%;
     }
 
     /* Ensure images don't overflow */
     img {
-        max-width: 100%;
-        height: auto;
+    max-width: 100%;
+    height: auto;
     }
-}
+    }
 
-/* Tablet adjustments */
-@media (min-width: 769px) and (max-width: 1024px) {
+    /* Tablet adjustments */
+    @media (min-width: 769px) and (max-width: 1024px) {
     .project-image {
-        height: 350px !important;
+    height: 350px !important;
     }
-}
+    }
+
+    /* --- 3D Parallax Tilt Effect --- */
+    .project-card {
+    perspective: 1000px;
+    transform-style: preserve-3d;
+    }
+
+    .project-image-container {
+    transform-style: preserve-3d;
+    transition: transform 0.15s ease-out, box-shadow 0.3s ease;
+    }
+
+    .project-image {
+    transition: transform 0.15s ease-out;
+    transform-style: preserve-3d;
+    backface-visibility: hidden;
+    }
+
+    .project-card .md\:col-span-5 {
+    transition: transform 0.15s ease-out;
+    }
+
+    /* --- Bento Cards Styling --- */
+    .bento-card {
+    position: relative;
+    transition: transform 0.5s cubic-bezier(0.16, 1, 0.3, 1),
+    border-color 0.5s cubic-bezier(0.16, 1, 0.3, 1),
+    box-shadow 0.5s cubic-bezier(0.16, 1, 0.3, 1);
+    box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+    }
+
+    .bento-card::before {
+    content: '';
+    position: absolute;
+    inset: -1px;
+    border-radius: inherit;
+    background: radial-gradient(400px circle at var(--mouse-x, 0) var(--mouse-y, 0),
+    rgba(var(--spotlight-color, var(--accent-purple-rgb)), 0.15),
+    transparent 80%);
+    opacity: 0;
+    transition: opacity 0.5s ease;
+    z-index: 0;
+    pointer-events: none;
+    }
+
+    .bento-card:hover::before {
+    opacity: 1;
+    }
+
+    .bento-card:hover {
+    box-shadow: 0 20px 40px -15px rgba(0, 0, 0, 0.3);
+    }
+
+    html.light .bento-card {
+    box-shadow: 0 4px 30px rgba(0, 0, 0, 0.02);
+    }
+
+    html.light .bento-card:hover {
+    box-shadow: 0 20px 40px -15px rgba(0, 0, 0, 0.08);
+    }
+
+    /* Specific glows for bento hover states */
+    .theme-cyan .bento-card:hover {
+    box-shadow: 0 15px 35px -15px rgba(0, 242, 254, 0.1);
+    }
+
+    .theme-purple .bento-card:hover {
+    box-shadow: 0 15px 35px -15px rgba(143, 0, 255, 0.1);
+    }
+
+    /* --- HUD / Layer Configurations --- */
+    section {
+    position: relative;
+    z-index: 5;
+    }
+
+    #particle-canvas {
+    z-index: 1;
+    }
+
+    .grid-overlay {
+    z-index: 0;
+    }
+
+    /* --- HUD Corner Accent Markers --- */
+    .hud-corner {
+    position: absolute;
+    width: 8px;
+    height: 8px;
+    border-color: rgba(var(--spotlight-color), 0.35);
+    border-style: solid;
+    pointer-events: none;
+    transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1), border-color 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+    z-index: 10;
+    }
+
+    .corner-tl {
+    top: 10px;
+    left: 10px;
+    border-width: 1.5px 0 0 1.5px;
+    }
+
+    .corner-tr {
+    top: 10px;
+    right: 10px;
+    border-width: 1.5px 1.5px 0 0;
+    }
+
+    .corner-bl {
+    bottom: 10px;
+    left: 10px;
+    border-width: 0 0 1.5px 1.5px;
+    }
+
+    .corner-br {
+    bottom: 10px;
+    right: 10px;
+    border-width: 0 1.5px 1.5px 0;
+    }
+
+    .bento-card:hover .corner-tl {
+    transform: translate(-3px, -3px);
+    border-color: rgba(var(--spotlight-color), 1);
+    }
+
+    .bento-card:hover .corner-tr {
+    transform: translate(3px, -3px);
+    border-color: rgba(var(--spotlight-color), 1);
+    }
+
+    .bento-card:hover .corner-bl {
+    transform: translate(-3px, 3px);
+    border-color: rgba(var(--spotlight-color), 1);
+    }
+
+    .bento-card:hover .corner-br {
+    transform: translate(3px, 3px);
+    border-color: rgba(var(--spotlight-color), 1);
+    }
+
+    /* --- Scan Line Separator --- */
+    .scan-line {
+    height: 1px;
+    background: linear-gradient(90deg, transparent, var(--accent-cyan), transparent);
+    position: relative;
+    overflow: hidden;
+    }
+
+    .scan-line::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 50%;
+    height: 100%;
+    background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.8), transparent);
+    animation: scan 4s infinite linear;
+    }
+
+    @keyframes scan {
+    0% {
+    left: -50%;
+    }
+
+    100% {
+    left: 150%;
+    }
+    }
+
+    /* --- Scroll to Top Circle Animation --- */
+    #scroll-progress-circle {
+    transition: stroke-dashoffset 0.1s ease-out;
+    }
+
+    /* --- Minecraft Chiseled Card Styling --- */
+    .minecraft-chiseled {
+    border-radius: 0px !important;
+    image-rendering: pixelated;
+    border: 4px solid #3f3f46;
+    /* Stone brick border */
+    box-shadow:
+    /* Outer chisel bevel highlights and shadows */
+    inset 4px 4px 0px rgba(255, 255, 255, 0.08),
+    inset -4px -4px 0px rgba(0, 0, 0, 0.5),
+    /* Outer deep groove */
+    inset 8px 8px 0px #18181b,
+    inset -8px -8px 0px #18181b,
+    /* Inner raised stone frame */
+    inset 12px 12px 0px #27272a,
+    inset -12px -12px 0px #27272a,
+    /* Inner deep groove */
+    inset 16px 16px 0px #111113,
+    inset -16px -16px 0px #111113,
+    /* Center block stone face */
+    inset 20px 20px 0px #1c1c1f,
+    inset -20px -20px 0px #1c1c1f,
+    /* Flat outer drop shadow */
+    4px 4px 0px rgba(0, 0, 0, 0.35);
+    transition: transform 0.2s steps(4), box-shadow 0.2s steps(4), border-color 0.2s steps(4);
+    z-index: 10;
+    }
+
+    .minecraft-chiseled:hover {
+    border-color: var(--accent-hover-color) !important;
+    transform: translate(-3px, -3px) !important;
+    box-shadow:
+    /* Outer chisel bevel highlights and shadows */
+    inset 4px 4px 0px rgba(255, 255, 255, 0.15),
+    inset -4px -4px 0px rgba(0, 0, 0, 0.6),
+    /* Outer deep groove matches accent glow */
+    inset 8px 8px 0px rgba(var(--spotlight-color), 0.15),
+    inset -8px -8px 0px rgba(var(--spotlight-color), 0.15),
+    /* Inner raised stone frame */
+    inset 12px 12px 0px #27272a,
+    inset -12px -12px 0px #27272a,
+    /* Inner deep groove matches accent glow */
+    inset 16px 16px 0px rgba(var(--spotlight-color), 0.25),
+    inset -16px -16px 0px rgba(var(--spotlight-color), 0.25),
+    /* Center block */
+    inset 20px 20px 0px #18181b,
+    inset -20px -20px 0px #18181b,
+    /* Outer drop shadow glow */
+    6px 6px 0px rgba(var(--spotlight-color), 0.2);
+    }
+
+    html.light .minecraft-chiseled {
+    border-color: #a1a1aa;
+    /* Light stone frame */
+    box-shadow:
+    inset 4px 4px 0px rgba(255, 255, 255, 0.7),
+    inset -4px -4px 0px rgba(0, 0, 0, 0.1),
+    /* Outer deep groove */
+    inset 8px 8px 0px #d4d4d8,
+    inset -8px -8px 0px #d4d4d8,
+    /* Inner raised quartz frame */
+    inset 12px 12px 0px #e4e4e7,
+    inset -12px -12px 0px #e4e4e7,
+    /* Inner deep groove */
+    inset 16px 16px 0px #c4c4c9,
+    inset -16px -16px 0px #c4c4c9,
+    /* Center block highlight */
+    inset 20px 20px 0px #fafafa,
+    inset -20px -20px 0px #fafafa,
+    /* Outer drop shadow */
+    4px 4px 0px rgba(0, 0, 0, 0.08);
+    }
+
+    html.light .minecraft-chiseled:hover {
+    border-color: var(--accent-hover-color) !important;
+    box-shadow:
+    inset 4px 4px 0px rgba(255, 255, 255, 0.75),
+    inset -4px -4px 0px rgba(0, 0, 0, 0.15),
+    /* Outer deep groove matches accent glow */
+    inset 8px 8px 0px rgba(var(--spotlight-color), 0.1),
+    inset -8px -8px 0px rgba(var(--spotlight-color), 0.1),
+    /* Inner raised quartz frame */
+    inset 12px 12px 0px #e4e4e7,
+    inset -12px -12px 0px #e4e4e7,
+    /* Inner deep groove matches accent glow */
+    inset 16px 16px 0px rgba(var(--spotlight-color), 0.15),
+    inset -16px -16px 0px rgba(var(--spotlight-color), 0.15),
+    /* Center block highlight */
+    inset 20px 20px 0px #fafafa,
+    inset -20px -20px 0px #fafafa,
+    /* Outer drop shadow glow */
+    6px 6px 0px rgba(var(--spotlight-color), 0.15);
+    }
+
+    /* --- Minecraft Inventory Slot Styling --- */
+    .minecraft-slot {
+    border-radius: 0px !important;
+    border: 2px solid #1c1c1f;
+    background: rgba(10, 10, 10, 0.4);
+    box-shadow:
+    /* Minecraft GUI Inset slot border (dark top/left, light bottom/right) */
+    inset 2px 2px 0px rgba(0, 0, 0, 0.55),
+    inset -2px -2px 0px rgba(255, 255, 255, 0.05);
+    transition: all 0.2s steps(4);
+    }
+
+    .minecraft-slot:hover {
+    background: rgba(255, 255, 255, 0.04) !important;
+    border-color: var(--accent-hover-color) !important;
+    }
+
+    html.light .minecraft-slot {
+    border-color: #d4d4d8;
+    background: rgba(255, 255, 255, 0.6);
+    box-shadow:
+    inset 2px 2px 0px rgba(0, 0, 0, 0.08),
+    inset -2px -2px 0px rgba(255, 255, 255, 0.9);
+    }
+
+    html.light .minecraft-slot:hover {
+    background: rgba(0, 0, 0, 0.02) !important;
+    border-color: var(--accent-hover-color) !important;
+    }
