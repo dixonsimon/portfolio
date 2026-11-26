@@ -21,6 +21,9 @@
 <body>
   <a class="skip" href="#main">Skip to content</a>
 
+  <!-- 3D particle field (drawn behind the dark sections) -->
+  <canvas class="gl" data-gl aria-hidden="true"></canvas>
+
   <!-- Intro curtain -->
   <div class="loader" aria-hidden="true">
     <div class="loader__inner">
@@ -43,11 +46,24 @@
       <a href="#about">About</a>
     </nav>
     <a class="nav__cta" href="#contact"><i class="dot" aria-hidden="true"></i>Get in touch</a>
+    <button class="nav__menu" type="button" aria-expanded="false" aria-controls="menu" data-menu-btn>
+      <span class="sr">Menu</span><i aria-hidden="true"></i><i aria-hidden="true"></i>
+    </button>
   </header>
+
+  <div class="menu" id="menu" data-menu hidden>
+    <nav aria-label="Mobile">
+      <a href="#now"><span class="mono">01</span>Halvane</a>
+      <a href="#work"><span class="mono">02</span>Work</a>
+      <a href="#index"><span class="mono">03</span>Index</a>
+      <a href="#about"><span class="mono">04</span>About</a>
+      <a href="#contact"><span class="mono">05</span>Contact</a>
+    </nav>
+  </div>
 
   <main id="main">
     <!-- ============ HERO ============ -->
-    <section class="hero" id="top" data-theme="dark">
+    <section class="hero" id="top" data-theme="dark" data-shape="0" data-shape-x="1.25" data-shape-y="-.1" data-shape-scale="1.55" data-shape-my="0.25" data-shape-ms="1.05" data-hero>
       <div class="hero__meta mono">
         <span>Portfolio · 2026</span>
         <span class="hide-sm">Designer &amp; developer</span>
@@ -55,17 +71,17 @@
       </div>
 
       <h1 class="hero__title" aria-label="Dixon Simon">
-        <span class="hero__line" aria-hidden="true"><span class="hero__word" data-hero>Dixon</span></span>
-        <span class="hero__line hero__line--2" aria-hidden="true"><span class="hero__word serif" data-hero>Simon</span></span>
+        <span class="hero__line" aria-hidden="true" data-hero-line="-1"><span class="hero__word" data-hero>Dixon</span></span>
+        <span class="hero__line hero__line--2" aria-hidden="true" data-hero-line="1"><span class="hero__word serif" data-hero>Simon</span></span>
       </h1>
 
       <div class="hero__stack" aria-hidden="true" data-stack>
-        <figure class="card card--1"><img src="assets/img/halvane-hero.webp" alt="" width="1375" height="868"></figure>
+        <figure class="card card--1"><img src="assets/img/halvane-hero.webp" alt="" width="1600" height="1000"></figure>
         <figure class="card card--2"><img src="assets/img/traffic-predict.webp" alt="" width="1440" height="900"></figure>
         <figure class="card card--3"><img src="assets/img/catchup-now.webp" alt="" width="1375" height="868"></figure>
       </div>
 
-      <div class="hero__foot">
+      <div class="hero__foot" data-hero-foot>
         <p class="hero__intro" data-fade>
           I design and build websites, apps, data tools and games. I care most about the parts people skip: <em class="serif">the words, the spacing, and how it feels on a cheap phone.</em>
         </p>
@@ -89,44 +105,80 @@
     </div>
 
     <!-- ============ NOW: HALVANE ============ -->
-    <section class="now" id="now" data-theme="light">
+    <section class="now" id="now" data-theme="halvane" data-shape="1" data-shape-scale="1.2">
       <div class="wrap">
-        <p class="label mono"><span>01</span><i aria-hidden="true"></i>Now</p>
+        <div class="now__top">
+          <p class="label mono"><span>01</span><i aria-hidden="true"></i>Now</p>
+          <a class="hv-logo-link" href="https://halvaneservice.vercel.app/" target="_blank" rel="noopener" aria-label="Halvane website">
+            <svg class="hv-logo" viewBox="146 116 826 136" aria-hidden="true"><g transform="translate(150,120)"><rect width="30" height="128" class="l1"/><rect x="93" width="29" height="128" class="l1"/><path d="M30 128A31.5 31.5 0 0 1 93 128Z" class="l2"/></g><g transform="translate(362,219) scale(0.5)"><rect y="-154" width="40" height="154" class="l1"/><path d="M0 0 V-68 C0 -102 34 -110 88.0 -110 C142 -110 176 -102 176 -68 V0 H136 V-76 C136 -81 122 -84 88.0 -84 C54 -84 40 -81 40 -76 V0Z" class="l1"/><path d="M194 -55.0 A88.0 55.0 0 1 1 370 -55.0 A88.0 55.0 0 1 1 194 -55.0Z M234 -55.0 A48.0 29.0 0 1 0 330 -55.0 A48.0 29.0 0 1 0 234 -55.0Z" class="l1" fill-rule="evenodd"/><rect x="330" y="-110" width="40" height="110" class="l1"/><rect x="388" y="-154" width="40" height="154" class="l1"/><path d="M446 -110 H492 L534.0 -34 L576 -110 H622 L554.0 0 H514.0Z" class="l2"/><path d="M640 -55.0 A88.0 55.0 0 1 1 816 -55.0 A88.0 55.0 0 1 1 640 -55.0Z M680 -55.0 A48.0 29.0 0 1 0 776 -55.0 A48.0 29.0 0 1 0 680 -55.0Z" class="l2" fill-rule="evenodd"/><rect x="776" y="-110" width="40" height="110" class="l2"/><path d="M834 0 V-68 C834 -102 868 -110 922.0 -110 C976 -110 1010 -102 1010 -68 V0 H970 V-76 C970 -81 956 -84 922.0 -84 C888 -84 874 -81 874 -76 V0Z" class="l2"/><mask id="hvm1" maskUnits="userSpaceOnUse" x="1026" y="-114" width="186" height="118"><path d="M1028 -55.0 A88.0 55.0 0 1 1 1204 -55.0 A88.0 55.0 0 1 1 1028 -55.0Z" fill="#fff"/><path d="M1070.94 -65.0 A48.0 29.0 0 0 1 1161.06 -65.0Z" fill="#000"/><path d="M1070.94 -45.0 H1210 V-26.0 H1116.0 A48.0 29.0 0 0 1 1070.94 -45.0Z" fill="#000"/></mask><rect x="1026" y="-114" width="186" height="118" class="l2" mask="url(#hvm1)"/></g></svg>
+          </a>
+        </div>
         <h2 class="h-xl" data-split>Running <em>Halvane,</em> a web design studio for small businesses.</h2>
 
         <div class="now__grid">
           <div class="now__copy">
-            <p data-fade>Halvane builds new websites for businesses that only have a directory listing, and redesigns sites that no longer do them justice. I lead the studio with two co-founders, and I design, write and build the work myself.</p>
-            <p data-fade>Every client starts with a free homepage concept, a fixed price in writing, and a site that is theirs to own at launch.</p>
-
-            <dl class="facts mono" data-fade>
-              <div><dt>Role</dt><dd>Founder, design &amp; build</dd></div>
-              <div><dt>Started</dt><dd>2026</dd></div>
-              <div><dt>Based</dt><dd>Bengaluru, working worldwide</dd></div>
-              <div><dt>Work</dt><dd>New sites, redesigns</dd></div>
-            </dl>
-
-            <a class="btn btn--dark" href="https://halvaneservice.vercel.app/" target="_blank" rel="noopener" data-magnetic>
-              Visit Halvane <span class="btn__arrow" aria-hidden="true">↗</span>
+            <p data-fade>Halvane builds new websites for businesses that only have a directory listing, and redesigns sites that no longer do them justice. I lead the studio with two co-founders in Bengaluru, and I design, write and build the work myself.</p>
+            <p data-fade>Every client starts with a free homepage concept and a fixed price in writing. Most sites go live in two to four weeks, on the client's own domain, with every login handed over.</p>
+            <a class="btn btn--hv" href="https://halvaneservice.vercel.app/" target="_blank" rel="noopener" data-magnetic>
+              <i class="dot dot--hv" aria-hidden="true"></i>Visit Halvane <span class="btn__arrow" aria-hidden="true">↗</span>
             </a>
           </div>
+          <dl class="facts mono" data-fade>
+            <div><dt>Role</dt><dd>Founder, design &amp; build</dd></div>
+            <div><dt>Started</dt><dd>2026</dd></div>
+            <div><dt>Services</dt><dd>New websites, redesigns</dd></div>
+            <div><dt>Timeline</dt><dd>Live in 2–4 weeks</dd></div>
+            <div><dt>Based</dt><dd>Bengaluru, working worldwide</dd></div>
+            <div><dt>Languages</dt><dd>English, Spanish, Portuguese</dd></div>
+          </dl>
+        </div>
+      </div>
 
-          <div class="now__shots">
-            <figure class="frame frame--light now__shot-a" data-reveal>
+      <!-- 3D coverflow, scrubbed by scroll -->
+      <div class="show" data-show>
+        <div class="show__pin">
+          <div class="show__dots" aria-hidden="true"></div>
+          <div class="show__head wrap">
+            <p class="mono show__kicker">Concept studies <span data-show-count>01 / 07</span></p>
+            <p class="show__caption" aria-live="polite"><b data-show-title>The studio site</b> <span data-show-sub>halvaneservice.vercel.app</span></p>
+          </div>
+          <div class="show__stage" data-show-stage>
+            <figure class="slide" data-slide data-title="The studio site" data-sub="halvaneservice.vercel.app">
               <div class="frame__bar"><i></i><i></i><i></i><span>halvaneservice.vercel.app</span></div>
-              <div class="frame__media" data-parallax><img src="assets/img/halvane-hero.webp" alt="Halvane homepage: Websites for small businesses. Built to be chosen." width="1375" height="868" loading="lazy"></div>
+              <img src="assets/img/halvane-hero.webp" alt="Halvane homepage: Websites for small businesses. Built to be chosen." width="1600" height="1000" loading="lazy">
             </figure>
-            <figure class="frame frame--light now__shot-b" data-reveal>
-              <div class="frame__bar"><i></i><i></i><i></i><span>Concept studies</span></div>
-              <div class="frame__media" data-parallax><img src="assets/img/halvane-concepts.webp" alt="Halvane concept homepages for a pilates studio and a barbershop" width="1375" height="728" loading="lazy"></div>
+            <figure class="slide" data-slide data-title="Why a website" data-sub="Before a customer visits, they search your name">
+              <div class="frame__bar"><i></i><i></i><i></i><span>01 · The search</span></div>
+              <img src="assets/img/hv-search.webp" alt="Halvane section explaining that customers search a business name before visiting" width="1400" height="875" loading="lazy">
+            </figure>
+            <figure class="slide" data-slide data-title="Stillpoint" data-sub="Concept · Pilates studio">
+              <div class="frame__bar"><i></i><i></i><i></i><span>stillpoint-studio.com</span></div>
+              <img src="assets/img/hv-stillpoint.webp" alt="Stillpoint pilates studio concept homepage with a weekly class timetable" width="1400" height="899" loading="lazy">
+            </figure>
+            <figure class="slide" data-slide data-title="Kingsley &amp; Co." data-sub="Concept · Barbershop">
+              <div class="frame__bar"><i></i><i></i><i></i><span>kingsley-barbers.co</span></div>
+              <img src="assets/img/hv-kingsley.webp" alt="Kingsley &amp; Co. barbershop concept homepage with a price list" width="1400" height="899" loading="lazy">
+            </figure>
+            <figure class="slide" data-slide data-title="Fresh &amp; Co." data-sub="Concept · Neighbourhood bakery">
+              <div class="frame__bar"><i></i><i></i><i></i><span>freshandco-bakery.com</span></div>
+              <img src="assets/img/hv-freshandco.webp" alt="Fresh &amp; Co. bakery concept homepage with today's bake" width="1400" height="900" loading="lazy">
+            </figure>
+            <figure class="slide" data-slide data-title="Lumen Dental" data-sub="Concept · Family dentistry">
+              <div class="frame__bar"><i></i><i></i><i></i><span>lumen-dental.com</span></div>
+              <img src="assets/img/hv-lumen.webp" alt="Lumen Dental concept homepage with an online booking widget" width="1400" height="900" loading="lazy">
+            </figure>
+            <figure class="slide" data-slide data-title="In every site" data-sub="Phone first, fast, clear, findable, accessible, yours">
+              <div class="frame__bar"><i></i><i></i><i></i><span>05 · In every site</span></div>
+              <img src="assets/img/hv-included.webp" alt="Halvane's six standards: phone first, fast to load, clear words, found on Google, easy for everyone, yours to own" width="1400" height="875" loading="lazy">
             </figure>
           </div>
+          <div class="show__bar wrap" aria-hidden="true"><span data-show-bar></span></div>
         </div>
       </div>
     </section>
 
     <!-- ============ SELECTED WORK ============ -->
-    <section class="work" id="work" data-theme="dark">
+    <section class="work" id="work" data-theme="dark" data-shape="2" data-shape-alpha=".5" data-shape-y="-.2">
       <div class="wrap">
         <div class="section-head">
           <p class="label mono"><span>02</span><i aria-hidden="true"></i>Selected work</p>
@@ -141,9 +193,9 @@
             <p class="project__lede serif">Predicting road congestion before you leave.</p>
             <p>A Flask app that forecasts Low, Medium or High congestion for any road, hour, weather and road condition. I generated 34,560 hourly records across 12 roads, trained and compared four classifiers without leaking the answer into the inputs, and built dashboards for trends, peak hours and model performance.</p>
             <ul class="stats">
-              <li><b>34,560</b><span>hourly records</span></li>
-              <li><b>4</b><span>models compared</span></li>
-              <li><b>93.9%</b><span>held-out accuracy</span></li>
+              <li><b data-countup="34560">34,560</b><span>hourly records</span></li>
+              <li><b data-countup="4">4</b><span>models compared</span></li>
+              <li><b data-countup="93.9" data-decimals="1" data-suffix="%">93.9%</b><span>held-out accuracy</span></li>
             </ul>
             <ul class="tags mono"><li>Python</li><li>Flask</li><li>scikit-learn</li><li>MySQL</li><li>Matplotlib</li></ul>
             <div class="project__links">
@@ -151,15 +203,15 @@
             </div>
           </div>
           <div class="project__media">
-            <figure class="frame" data-reveal>
+            <figure class="frame" data-tilt>
               <div class="frame__bar"><i></i><i></i><i></i><span>Predict congestion</span></div>
               <div class="frame__media" data-parallax><img src="assets/img/traffic-predict.webp" alt="Prediction screen showing High congestion for Airport Link Road on Monday at 08:00" width="1440" height="900" loading="lazy"></div>
             </figure>
             <div class="duo">
-              <figure class="frame frame--sm" data-reveal>
+              <figure class="frame frame--sm" data-tilt>
                 <div class="frame__media"><img src="assets/img/traffic-dash.webp" alt="Analytics dashboard with hourly and daily traffic trends" width="1440" height="900" loading="lazy"></div>
               </figure>
-              <figure class="frame frame--sm" data-reveal>
+              <figure class="frame frame--sm" data-tilt>
                 <div class="frame__media"><img src="assets/img/traffic-models.webp" alt="Model comparison table and charts for four classifiers" width="1440" height="900" loading="lazy"></div>
               </figure>
             </div>
@@ -179,37 +231,17 @@
             </div>
           </div>
           <div class="project__media">
-            <figure class="frame" data-reveal>
+            <figure class="frame" data-tilt>
               <div class="frame__bar"><i></i><i></i><i></i><span>catchup-now.vercel.app</span></div>
               <div class="frame__media" data-parallax><img src="assets/img/catchup-now.webp" alt="CatchUp Now website with a phone showing the evening brief" width="1375" height="868" loading="lazy"></div>
             </figure>
           </div>
         </article>
 
-        <!-- Project: UseLab -->
+        <!-- Project: Ashes of Outlaws -->
         <article class="project">
           <div class="project__info">
-            <div class="project__top mono"><span class="project__no">03</span><span>2026</span><span>Product · UX research tool</span></div>
-            <h3 class="project__title">UseLab</h3>
-            <p class="project__lede serif">A workspace for running usability tests.</p>
-            <p>Plan tasks, recruit participants, run live sessions and note where people struggled. Success rate and time on task roll up into a report automatically, so findings are ready the moment the last session ends.</p>
-            <ul class="tags mono"><li>JavaScript</li><li>ES modules</li><li>CSS</li><li>UX research</li></ul>
-            <div class="project__links">
-              <a class="link" href="https://github.com/dixonsimon/uselab" target="_blank" rel="noopener">View code <span aria-hidden="true">↗</span></a>
-            </div>
-          </div>
-          <div class="project__media">
-            <figure class="frame" data-reveal>
-              <div class="frame__bar"><i></i><i></i><i></i><span>Reporting &amp; analysis</span></div>
-              <div class="frame__media" data-parallax><img src="assets/img/uselab.webp" alt="UseLab dashboard with sessions, success rate and observations" width="1440" height="900" loading="lazy"></div>
-            </figure>
-          </div>
-        </article>
-
-        <!-- Project: Ashes of Outlaws -->
-        <article class="project project--flip">
-          <div class="project__info">
-            <div class="project__top mono"><span class="project__no">04</span><span>2026</span><span>Game · Unity 6</span></div>
+            <div class="project__top mono"><span class="project__no">03</span><span>2026</span><span>Game · Unity 6</span></div>
             <h3 class="project__title">Ashes of Outlaws</h3>
             <p class="project__lede serif">A third-person Western, built from the camera out.</p>
             <p>An action-adventure prototype in Unity 6 with the Universal Render Pipeline. I wrote an over-the-shoulder orbit camera that smooths out terrain jitter, and a facial animation system that gives the bandit blinking, glancing eyes with properly layered materials.</p>
@@ -219,20 +251,18 @@
             </div>
           </div>
           <div class="project__media">
-            <figure class="frame frame--poster" data-reveal>
-              <div class="poster" data-parallax>
+            <figure class="frame frame--poster" data-tilt data-poster>
+              <div class="poster">
                 <svg class="poster__art" viewBox="0 0 800 500" preserveAspectRatio="xMidYMid slice" aria-hidden="true">
                   <defs>
                     <linearGradient id="sky" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#1b0f0b"/><stop offset=".45" stop-color="#6e2a14"/><stop offset=".72" stop-color="#d0642a"/><stop offset="1" stop-color="#f3b46b"/></linearGradient>
                     <radialGradient id="sun" cx=".5" cy=".5" r=".5"><stop offset="0" stop-color="#ffe2b0"/><stop offset=".6" stop-color="#ffb366"/><stop offset="1" stop-color="#ff8a3d" stop-opacity="0"/></radialGradient>
                   </defs>
-                  <rect width="800" height="500" fill="url(#sky)"/>
-                  <circle cx="560" cy="330" r="150" fill="url(#sun)" opacity=".9"/>
-                  <circle cx="560" cy="330" r="62" fill="#ffd9a1"/>
-                  <path d="M0 360 L70 360 L82 300 L150 296 L162 360 L300 362 L330 330 L360 365 L800 362 L800 500 L0 500Z" fill="#3a170d"/>
-                  <path d="M0 400 L180 392 L200 352 L290 348 L306 395 L520 400 L548 372 L640 368 L660 402 L800 398 L800 500 L0 500Z" fill="#240d07"/>
-                  <path d="M0 440 Q200 425 400 438 T800 432 L800 500 L0 500Z" fill="#120604"/>
-                  <g fill="#120604"><rect x="118" y="404" width="5" height="40"/><path d="M110 418 h21 v4 h-21z"/><path d="M106 402 q14-10 28 0 q-14 4-28 0z"/></g>
+                  <rect x="-40" y="-60" width="880" height="620" fill="url(#sky)"/>
+                  <g class="pl" style="--d:.15"><circle cx="560" cy="330" r="150" fill="url(#sun)" opacity=".9"/><circle cx="560" cy="330" r="62" fill="#ffd9a1"/></g>
+                  <path class="pl" style="--d:.35" d="M-40 360 L70 360 L82 300 L150 296 L162 360 L300 362 L330 330 L360 365 L840 362 L840 560 L-40 560Z" fill="#3a170d"/>
+                  <path class="pl" style="--d:.6" d="M-40 400 L180 392 L200 352 L290 348 L306 395 L520 400 L548 372 L640 368 L660 402 L840 398 L840 560 L-40 560Z" fill="#240d07"/>
+                  <g class="pl" style="--d:1"><path d="M-40 440 Q200 425 400 438 T840 432 L840 560 L-40 560Z" fill="#120604"/><g fill="#120604"><rect x="118" y="404" width="5" height="40"/><path d="M110 418 h21 v4 h-21z"/><path d="M106 402 q14-10 28 0 q-14 4-28 0z"/></g></g>
                 </svg>
                 <div class="poster__type">
                   <span class="mono">A Unity 6 prototype</span>
@@ -244,78 +274,76 @@
         </article>
 
         <!-- Project: UX case studies -->
-        <article class="project">
+        <article class="project project--flip">
           <div class="project__info">
-            <div class="project__top mono"><span class="project__no">05</span><span>2026</span><span>UX case studies</span></div>
+            <div class="project__top mono"><span class="project__no">04</span><span>2026</span><span>UX case studies</span></div>
             <h3 class="project__title">CityLib &amp; ZenRoutine</h3>
             <p class="project__lede serif">Two problems, solved on paper first.</p>
             <p><b>CityLib</b> audits a municipal library website against Nielsen's ten heuristics, then redesigns it with a small design system and a high-fidelity mockup. <b>ZenRoutine</b> takes a habit tracker from user research and personas through flows to interactive wireframes, with one rule: logging a habit should take one tap.</p>
             <ul class="tags mono"><li>Heuristic evaluation</li><li>Personas</li><li>User flows</li><li>Wireframes</li></ul>
             <div class="project__links">
-              <a class="link" href="https://github.com/dixonsimon/citylib" target="_blank" rel="noopener">CityLib <span aria-hidden="true">↗</span></a>
-              <a class="link" href="https://github.com/dixonsimon/ZenRoutine" target="_blank" rel="noopener">ZenRoutine <span aria-hidden="true">↗</span></a>
+              <a class="link" href="https://dixonsimon.github.io/citylib/" target="_blank" rel="noopener">CityLib case study <span aria-hidden="true">↗</span></a>
+              <a class="link" href="https://dixonsimon.github.io/ZenRoutine/" target="_blank" rel="noopener">ZenRoutine case study <span aria-hidden="true">↗</span></a>
             </div>
           </div>
           <div class="project__media">
-            <div class="duo duo--tall">
-              <figure class="frame" data-reveal>
-                <div class="frame__bar"><i></i><i></i><i></i><span>CityLib</span></div>
-                <div class="frame__media"><img src="assets/img/citylib.webp" alt="CityLib case study cover" width="1440" height="900" loading="lazy"></div>
-              </figure>
-              <figure class="frame" data-reveal>
-                <div class="frame__bar"><i></i><i></i><i></i><span>ZenRoutine</span></div>
-                <div class="frame__media"><img src="assets/img/zenroutine.webp" alt="ZenRoutine case study cover" width="1440" height="900" loading="lazy"></div>
-              </figure>
-            </div>
+            <figure class="frame" data-tilt>
+              <div class="frame__bar"><i></i><i></i><i></i><span>dixonsimon.github.io/citylib</span></div>
+              <div class="frame__media" data-parallax><img src="assets/img/citylib.webp" alt="CityLib case study cover: revitalizing the library website" width="1440" height="900" loading="lazy"></div>
+            </figure>
+            <figure class="frame" data-tilt>
+              <div class="frame__bar"><i></i><i></i><i></i><span>dixonsimon.github.io/ZenRoutine</span></div>
+              <div class="frame__media" data-parallax><img src="assets/img/zenroutine.webp" alt="ZenRoutine case study cover: minimalist habit tracking" width="1440" height="900" loading="lazy"></div>
+            </figure>
           </div>
         </article>
       </div>
     </section>
 
     <!-- ============ INDEX ============ -->
-    <section class="index" id="index" data-theme="dark">
+    <section class="index" id="index" data-theme="dark" data-shape="3" data-shape-alpha=".55" data-shape-x="1.9" data-shape-mx="0">
       <div class="wrap">
         <div class="section-head section-head--row">
           <p class="label mono"><span>03</span><i aria-hidden="true"></i>Index</p>
-          <h2 class="h-lg" data-split>Smaller builds, <em>experiments and games.</em></h2>
+          <h2 class="h-lg" data-split>More builds, <em>experiments and games.</em></h2>
         </div>
 
         <ol class="list" data-list>
-          <li><a href="https://github.com/dixonsimon/CodexForge" target="_blank" rel="noopener">
+          <li data-row><a href="https://codexforge.vercel.app" target="_blank" rel="noopener" data-preview="assets/img/codexforge.webp">
             <span class="list__year mono">2026</span>
             <span class="list__name">CodexForge</span>
             <span class="list__desc">Prototype of an AI coding workspace with a Monaco editor, chat and agent services</span>
-            <span class="list__stack mono">Next.js · NestJS · FastAPI</span>
+            <span class="list__stack mono">Next.js · NestJS · FastAPI<em>Live demo</em></span>
             <span class="list__go" aria-hidden="true">↗</span></a></li>
-          <li><a href="https://github.com/dixonsimon/Doogo---A-Dog-Game" target="_blank" rel="noopener">
-            <span class="list__year mono">2026</span>
-            <span class="list__name">Doogo</span>
-            <span class="list__desc">A 3D game about a dog in an endless, procedurally generated world</span>
-            <span class="list__stack mono">C · raylib</span>
-            <span class="list__go" aria-hidden="true">↗</span></a></li>
-          <li><a href="https://github.com/dixonsimon/SOCSE-Chaiwala" target="_blank" rel="noopener">
-            <span class="list__year mono">2026</span>
-            <span class="list__name">SOCSE Chaiwala</span>
-            <span class="list__desc">A playful, chai-themed site for our department, with a click-for-aura game</span>
-            <span class="list__stack mono">HTML · CSS · JS</span>
-            <span class="list__go" aria-hidden="true">↗</span></a></li>
-          <li><a href="https://chaiwala-gpa.vercel.app/" target="_blank" rel="noopener" data-preview="assets/img/gpa-calculator.webp">
-            <span class="list__year mono">2025</span>
-            <span class="list__name">GPA Calculator</span>
-            <span class="list__desc">SGPA calculator for RV University's AI &amp; ML students, with credit-weighted results</span>
-            <span class="list__stack mono">JavaScript</span>
-            <span class="list__go" aria-hidden="true">↗</span></a></li>
-          <li><a href="https://science-web-game.vercel.app/" target="_blank" rel="noopener" data-preview="assets/img/scientist-sandbox.webp">
+          <li data-row><a href="https://science-web-game.vercel.app/" target="_blank" rel="noopener" data-preview="assets/img/scientist-sandbox.webp">
             <span class="list__year mono">2025</span>
             <span class="list__name">Scientist Sandbox</span>
-            <span class="list__desc">Explore Perlin-noise hills and collect samples that teach environmental facts</span>
-            <span class="list__stack mono">Three.js</span>
+            <span class="list__desc">A browser game: explore Perlin-noise hills and collect samples that teach environmental facts</span>
+            <span class="list__stack mono">Three.js<em>Playable</em></span>
             <span class="list__go" aria-hidden="true">↗</span></a></li>
-          <li><a href="https://github.com/dixonsimon/NammaRation" target="_blank" rel="noopener">
+          <li data-row><a href="https://github.com/dixonsimon/Doogo---A-Dog-Game" target="_blank" rel="noopener" data-preview="assets/img/doogo.svg">
+            <span class="list__year mono">2026</span>
+            <span class="list__name">Doogo</span>
+            <span class="list__desc">A 3D game about a dog in an endless, procedurally generated world, written in C</span>
+            <span class="list__stack mono">C · raylib<em>Source</em></span>
+            <span class="list__go" aria-hidden="true">↗</span></a></li>
+          <li data-row><a href="https://nammaration.vercel.app" target="_blank" rel="noopener" data-preview="assets/img/namma-ration.webp">
             <span class="list__year mono">2025</span>
             <span class="list__name">Namma Ration</span>
             <span class="list__desc">An accessible ration-shop front end for cardholders with limited digital literacy</span>
-            <span class="list__stack mono">HTML · CSS · JS</span>
+            <span class="list__stack mono">HTML · CSS · JS<em>Live demo</em></span>
+            <span class="list__go" aria-hidden="true">↗</span></a></li>
+          <li data-row><a href="https://socse-chaiwala.vercel.app" target="_blank" rel="noopener" data-preview="assets/img/socse-chaiwala.webp">
+            <span class="list__year mono">2026</span>
+            <span class="list__name">SOCSE Chaiwala</span>
+            <span class="list__desc">A playful, chai-themed site for our department, with a click-for-aura game</span>
+            <span class="list__stack mono">HTML · CSS · JS<em>Live demo</em></span>
+            <span class="list__go" aria-hidden="true">↗</span></a></li>
+          <li data-row><a href="https://chaiwala-gpa.vercel.app/" target="_blank" rel="noopener" data-preview="assets/img/gpa-calculator.webp">
+            <span class="list__year mono">2025</span>
+            <span class="list__name">GPA Calculator</span>
+            <span class="list__desc">SGPA calculator for RV University's AI &amp; ML students, with credit-weighted results</span>
+            <span class="list__stack mono">JavaScript<em>Live demo</em></span>
             <span class="list__go" aria-hidden="true">↗</span></a></li>
         </ol>
         <div class="preview" aria-hidden="true" data-preview-box><img alt=""></div>
@@ -325,11 +353,11 @@
     </section>
 
     <!-- ============ ABOUT ============ -->
-    <section class="about" id="about" data-theme="light">
+    <section class="about" id="about" data-theme="light" data-shape="1.5">
       <div class="wrap">
         <p class="label mono"><span>04</span><i aria-hidden="true"></i>About</p>
         <div class="about__grid">
-          <figure class="about__photo" data-reveal>
+          <figure class="about__photo" data-reveal data-photo>
             <img src="assets/img/portrait.webp" alt="Portrait of Dixon Simon" width="699" height="565" loading="lazy">
             <figcaption class="mono">Dixon Simon · Bengaluru</figcaption>
           </figure>
@@ -347,7 +375,7 @@
           </div>
           <div class="kit__col" data-fade>
             <h3 class="mono">Front-end</h3>
-            <ul><li>HTML, CSS, JavaScript</li><li>Next.js</li><li>Tailwind</li><li>Motion &amp; interaction</li></ul>
+            <ul><li>HTML, CSS, JavaScript</li><li>Next.js</li><li>Tailwind</li><li>WebGL &amp; motion</li></ul>
           </div>
           <div class="kit__col" data-fade>
             <h3 class="mono">Data &amp; ML</h3>
@@ -362,13 +390,13 @@
     </section>
 
     <!-- ============ CONTACT ============ -->
-    <section class="contact" id="contact" data-theme="dark">
+    <section class="contact" id="contact" data-theme="dark" data-shape="0" data-shape-x="1.7" data-shape-scale="1.3" data-shape-alpha=".9" data-shape-my="0.6" data-shape-ms=".9">
       <div class="wrap">
         <p class="label mono"><span>05</span><i aria-hidden="true"></i>Contact</p>
         <h2 class="contact__title" data-split>Have something <em>worth building?</em></h2>
 
         <div class="contact__mail">
-          <a class="contact__email" href="mailto:sdixon182007@gmail.com" data-magnetic>sdixon182007@gmail.com</a>
+          <a class="contact__email" href="mailto:sdixon182007@gmail.com" data-magnetic>sdixon182007<wbr>@gmail.com</a>
           <button class="copy mono" type="button" data-copy="sdixon182007@gmail.com"><span data-copy-label>Copy</span></button>
         </div>
 
@@ -391,7 +419,7 @@
   </main>
 
   <footer class="footer" data-theme="dark">
-    <div class="footer__word" aria-hidden="true"><span>Dixon</span> <em>Simon</em></div>
+    <div class="footer__word" aria-hidden="true" data-footer-word><span>Dixon</span> <em>Simon</em></div>
     <div class="footer__row mono">
       <span>© 2026 Dixon Simon</span>
       <span>Designed and built in Bengaluru</span>
@@ -401,5 +429,6 @@
 
   <script src="assets/js/lenis.min.js" defer></script>
   <script src="assets/js/main.js" defer></script>
+  <script src="assets/js/field.js" defer></script>
 </body>
 </html>
