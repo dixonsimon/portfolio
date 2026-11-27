@@ -4,10 +4,10 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
   <title>Dixon Simon — Designer &amp; developer, Bengaluru</title>
-  <meta name="description" content="Dixon Simon designs and builds websites, apps, data tools and games. Founder of Halvane, a web design studio for small businesses. B.Sc (Hons) AI & ML at RV University, Bengaluru.">
+  <meta name="description" content="Dixon Simon designs and builds websites, software, apps and games. Founder of Halvane, a Bengaluru studio making websites, custom software and apps for small businesses. B.Sc (Hons) AI & ML at RV University.">
   <meta name="theme-color" content="#0d0d0c">
   <meta property="og:title" content="Dixon Simon — Designer & developer">
-  <meta property="og:description" content="Websites, apps, data tools and games. Founder of Halvane.">
+  <meta property="og:description" content="Websites, software, apps and games. Founder of Halvane.">
   <meta property="og:type" content="website">
   <meta property="og:url" content="https://dixonsimon.vercel.app/">
   <meta property="og:image" content="https://dixonsimon.vercel.app/assets/img/og.png">
@@ -15,6 +15,7 @@
   <link rel="icon" href="assets/img/favicon.svg" type="image/svg+xml">
   <link rel="preload" href="assets/fonts/geist-latin-wght-normal.woff2" as="font" type="font/woff2" crossorigin>
   <link rel="preload" href="assets/fonts/instrument-serif-latin-400-italic.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="preload" href="assets/img/hv-home.webp" as="image">
   <link rel="stylesheet" href="assets/css/style.css">
   <script>document.documentElement.classList.add('js');</script>
 </head>
@@ -24,12 +25,16 @@
   <!-- 3D particle field (drawn behind the dark sections) -->
   <canvas class="gl" data-gl aria-hidden="true"></canvas>
 
+  <!-- pointer label that follows over media -->
+  <div class="cursor" aria-hidden="true" data-cursor><span data-cursor-label>View</span></div>
+
   <!-- Intro curtain -->
   <div class="loader" aria-hidden="true">
     <div class="loader__inner">
-      <span class="loader__name">Dixon <em>Simon</em></span>
-      <span class="loader__count"><span data-count>0</span>%</span>
+      <span class="loader__name"><span>Dixon</span> <em>Simon</em></span>
+      <span class="loader__count"><span data-count>0</span></span>
     </div>
+    <div class="loader__bar"><span data-loader-bar></span></div>
   </div>
 
   <div class="progress" aria-hidden="true"><span></span></div>
@@ -40,10 +45,9 @@
       <span>Dixon Simon</span>
     </a>
     <nav class="nav__links" aria-label="Main">
-      <a href="#now">Halvane</a>
-      <a href="#work">Work</a>
-      <a href="#index">Index</a>
-      <a href="#about">About</a>
+      <a href="#now" data-scramble>Halvane</a>
+      <a href="#work" data-scramble>Work</a>
+      <a href="#about" data-scramble>About</a>
     </nav>
     <a class="nav__cta" href="#contact"><i class="dot" aria-hidden="true"></i>Get in touch</a>
     <button class="nav__menu" type="button" aria-expanded="false" aria-controls="menu" data-menu-btn>
@@ -55,9 +59,8 @@
     <nav aria-label="Mobile">
       <a href="#now"><span class="mono">01</span>Halvane</a>
       <a href="#work"><span class="mono">02</span>Work</a>
-      <a href="#index"><span class="mono">03</span>Index</a>
-      <a href="#about"><span class="mono">04</span>About</a>
-      <a href="#contact"><span class="mono">05</span>Contact</a>
+      <a href="#about"><span class="mono">03</span>About</a>
+      <a href="#contact"><span class="mono">04</span>Contact</a>
     </nav>
   </div>
 
@@ -76,17 +79,17 @@
       </h1>
 
       <div class="hero__stack" aria-hidden="true" data-stack>
-        <figure class="card card--1"><img src="assets/img/halvane-hero.webp" alt="" width="1600" height="1000"></figure>
-        <figure class="card card--2"><img src="assets/img/traffic-predict.webp" alt="" width="1440" height="900"></figure>
+        <figure class="card card--1"><img src="assets/img/hv-home.webp" alt="" width="1600" height="1000"></figure>
+        <figure class="card card--2"><img src="assets/img/hv-quillmoor.webp" alt="" width="1600" height="1000"></figure>
         <figure class="card card--3"><img src="assets/img/catchup-now.webp" alt="" width="1375" height="868"></figure>
       </div>
 
       <div class="hero__foot" data-hero-foot>
         <p class="hero__intro" data-fade>
-          I design and build websites, apps, data tools and games. I care most about the parts people skip: <em class="serif">the words, the spacing, and how it feels on a cheap phone.</em>
+          I design and build websites, software, apps and games. I care most about the parts people skip: <em class="serif">the words, the spacing, and how it feels on a cheap phone.</em>
         </p>
         <div class="hero__roles mono" data-fade>
-          <span><b>Founder</b> Halvane</span>
+          <span><b>Founder</b> Halvane studio</span>
           <span><b>Studying</b> B.Sc (Hons) AI &amp; ML, RV University</span>
         </div>
         <a class="hero__scroll mono" href="#now" data-fade>
@@ -99,39 +102,46 @@
     <!-- ============ MARQUEE ============ -->
     <div class="marquee" aria-hidden="true" data-marquee>
       <div class="marquee__skew"><div class="marquee__track">
-        <span>Product design</span><i>✦</i><span>Front-end</span><i>✦</i><span>Machine learning</span><i>✦</i><span>Android</span><i>✦</i><span>Game development</span><i>✦</i><span>UX research</span><i>✦</i>
-        <span>Product design</span><i>✦</i><span>Front-end</span><i>✦</i><span>Machine learning</span><i>✦</i><span>Android</span><i>✦</i><span>Game development</span><i>✦</i><span>UX research</span><i>✦</i>
+        <span>Websites</span><i>✦</i><span>Custom software</span><i>✦</i><span>Android apps</span><i>✦</i><span>Machine learning</span><i>✦</i><span>Product design</span><i>✦</i><span>Games</span><i>✦</i>
+        <span>Websites</span><i>✦</i><span>Custom software</span><i>✦</i><span>Android apps</span><i>✦</i><span>Machine learning</span><i>✦</i><span>Product design</span><i>✦</i><span>Games</span><i>✦</i>
       </div></div>
     </div>
 
     <!-- ============ NOW: HALVANE ============ -->
-    <section class="now" id="now" data-theme="halvane" data-shape="1" data-shape-scale="1.2">
+    <section class="now" id="now" data-theme="halvane" data-shape="1" data-shape-scale="1.2" data-sheet>
       <div class="wrap">
         <div class="now__top">
           <p class="label mono"><span>01</span><i aria-hidden="true"></i>Now</p>
-          <a class="hv-logo-link" href="https://halvaneservice.vercel.app/" target="_blank" rel="noopener" aria-label="Halvane website">
+          <a class="hv-logo-link" href="https://halvanestudio.vercel.app/" target="_blank" rel="noopener" aria-label="Halvane studio website">
             <svg class="hv-logo" viewBox="146 116 826 136" aria-hidden="true"><g transform="translate(150,120)"><rect width="30" height="128" class="l1"/><rect x="93" width="29" height="128" class="l1"/><path d="M30 128A31.5 31.5 0 0 1 93 128Z" class="l2"/></g><g transform="translate(362,219) scale(0.5)"><rect y="-154" width="40" height="154" class="l1"/><path d="M0 0 V-68 C0 -102 34 -110 88.0 -110 C142 -110 176 -102 176 -68 V0 H136 V-76 C136 -81 122 -84 88.0 -84 C54 -84 40 -81 40 -76 V0Z" class="l1"/><path d="M194 -55.0 A88.0 55.0 0 1 1 370 -55.0 A88.0 55.0 0 1 1 194 -55.0Z M234 -55.0 A48.0 29.0 0 1 0 330 -55.0 A48.0 29.0 0 1 0 234 -55.0Z" class="l1" fill-rule="evenodd"/><rect x="330" y="-110" width="40" height="110" class="l1"/><rect x="388" y="-154" width="40" height="154" class="l1"/><path d="M446 -110 H492 L534.0 -34 L576 -110 H622 L554.0 0 H514.0Z" class="l2"/><path d="M640 -55.0 A88.0 55.0 0 1 1 816 -55.0 A88.0 55.0 0 1 1 640 -55.0Z M680 -55.0 A48.0 29.0 0 1 0 776 -55.0 A48.0 29.0 0 1 0 680 -55.0Z" class="l2" fill-rule="evenodd"/><rect x="776" y="-110" width="40" height="110" class="l2"/><path d="M834 0 V-68 C834 -102 868 -110 922.0 -110 C976 -110 1010 -102 1010 -68 V0 H970 V-76 C970 -81 956 -84 922.0 -84 C888 -84 874 -81 874 -76 V0Z" class="l2"/><mask id="hvm1" maskUnits="userSpaceOnUse" x="1026" y="-114" width="186" height="118"><path d="M1028 -55.0 A88.0 55.0 0 1 1 1204 -55.0 A88.0 55.0 0 1 1 1028 -55.0Z" fill="#fff"/><path d="M1070.94 -65.0 A48.0 29.0 0 0 1 1161.06 -65.0Z" fill="#000"/><path d="M1070.94 -45.0 H1210 V-26.0 H1116.0 A48.0 29.0 0 0 1 1070.94 -45.0Z" fill="#000"/></mask><rect x="1026" y="-114" width="186" height="118" class="l2" mask="url(#hvm1)"/></g></svg>
           </a>
         </div>
-        <h2 class="h-xl" data-split>Running <em>Halvane,</em> a web design studio for small businesses.</h2>
+        <h2 class="h-xl now__title" data-split>Running <em>Halvane,</em> a studio for websites, software and apps.</h2>
 
         <div class="now__grid">
           <div class="now__copy">
-            <p data-fade>Halvane builds new websites for businesses that only have a directory listing, and redesigns sites that no longer do them justice. I lead the studio with two co-founders in Bengaluru, and I design, write and build the work myself.</p>
-            <p data-fade>Every client starts with a free homepage concept and a fixed price in writing. Most sites go live in two to four weeks, on the client's own domain, with every login handed over.</p>
-            <a class="btn btn--hv" href="https://halvaneservice.vercel.app/" target="_blank" rel="noopener" data-magnetic>
+            <p class="read" data-fade>Halvane makes websites, custom software such as online booking and client portals, and Android and desktop apps for estate agencies, clinics and other small businesses. I lead the studio with two co-founders in Bengaluru, and I design, write and build the work myself.</p>
+            <p class="read" data-fade>Every client sees a free homepage concept or a clickable prototype first, then gets a fixed price in writing. Websites go live in two to four weeks, on the client's own domain, with every login handed over.</p>
+            <a class="btn btn--hv" href="https://halvanestudio.vercel.app/" target="_blank" rel="noopener" data-magnetic>
               <i class="dot dot--hv" aria-hidden="true"></i>Visit Halvane <span class="btn__arrow" aria-hidden="true">↗</span>
             </a>
           </div>
-          <dl class="facts mono" data-fade>
+          <dl class="facts hv-mono" data-fade>
             <div><dt>Role</dt><dd>Founder, design &amp; build</dd></div>
             <div><dt>Started</dt><dd>2026</dd></div>
-            <div><dt>Services</dt><dd>New websites, redesigns</dd></div>
-            <div><dt>Timeline</dt><dd>Live in 2–4 weeks</dd></div>
-            <div><dt>Based</dt><dd>Bengaluru, working worldwide</dd></div>
+            <div><dt>Builds</dt><dd>Websites, software, apps</dd></div>
+            <div><dt>Sectors</dt><dd><i class="dot dot--hv dot--still" aria-hidden="true"></i>Real estate · Health &amp; hygiene</dd></div>
+            <div><dt>First step</dt><dd>Free concept in 3–5 days</dd></div>
             <div><dt>Languages</dt><dd>English, Spanish, Portuguese</dd></div>
           </dl>
         </div>
+
+        <ol class="svc" data-svc>
+          <li data-fold><span class="svc__k">A</span><h3>New websites</h3><p>For businesses that only have a directory listing.</p></li>
+          <li data-fold><span class="svc__k">B</span><h3>Redesigns</h3><p>For sites that feel old, slow or broken on a phone.</p></li>
+          <li data-fold><span class="svc__k">C</span><h3>Custom software</h3><p>Online booking, client portals, property listings, simple CRMs.</p></li>
+          <li data-fold><span class="svc__k">D</span><h3>Android &amp; desktop apps</h3><p>For customers, for staff, and for the front desk.</p></li>
+        </ol>
       </div>
 
       <!-- 3D coverflow, scrubbed by scroll -->
@@ -139,223 +149,193 @@
         <div class="show__pin">
           <div class="show__dots" aria-hidden="true"></div>
           <div class="show__head wrap">
-            <p class="mono show__kicker">Concept studies <span data-show-count>01 / 07</span></p>
-            <p class="show__caption" aria-live="polite"><b data-show-title>The studio site</b> <span data-show-sub>halvaneservice.vercel.app</span></p>
+            <p class="hv-mono show__kicker">The studio &amp; its concepts <span data-show-count>01 / 07</span></p>
+            <p class="show__caption" aria-live="polite"><b data-show-title>Halvane</b> <span data-show-sub>halvanestudio.vercel.app</span></p>
           </div>
           <div class="show__stage" data-show-stage>
-            <figure class="slide" data-slide data-title="The studio site" data-sub="halvaneservice.vercel.app">
-              <div class="frame__bar"><i></i><i></i><i></i><span>halvaneservice.vercel.app</span></div>
-              <img src="assets/img/halvane-hero.webp" alt="Halvane homepage: Websites for small businesses. Built to be chosen." width="1600" height="1000" loading="lazy">
-            </figure>
-            <figure class="slide" data-slide data-title="Why a website" data-sub="Before a customer visits, they search your name">
-              <div class="frame__bar"><i></i><i></i><i></i><span>01 · The search</span></div>
-              <img src="assets/img/hv-search.webp" alt="Halvane section explaining that customers search a business name before visiting" width="1400" height="875" loading="lazy">
-            </figure>
-            <figure class="slide" data-slide data-title="Stillpoint" data-sub="Concept · Pilates studio">
-              <div class="frame__bar"><i></i><i></i><i></i><span>stillpoint-studio.com</span></div>
-              <img src="assets/img/hv-stillpoint.webp" alt="Stillpoint pilates studio concept homepage with a weekly class timetable" width="1400" height="899" loading="lazy">
-            </figure>
-            <figure class="slide" data-slide data-title="Kingsley &amp; Co." data-sub="Concept · Barbershop">
-              <div class="frame__bar"><i></i><i></i><i></i><span>kingsley-barbers.co</span></div>
-              <img src="assets/img/hv-kingsley.webp" alt="Kingsley &amp; Co. barbershop concept homepage with a price list" width="1400" height="899" loading="lazy">
-            </figure>
-            <figure class="slide" data-slide data-title="Fresh &amp; Co." data-sub="Concept · Neighbourhood bakery">
-              <div class="frame__bar"><i></i><i></i><i></i><span>freshandco-bakery.com</span></div>
-              <img src="assets/img/hv-freshandco.webp" alt="Fresh &amp; Co. bakery concept homepage with today's bake" width="1400" height="900" loading="lazy">
-            </figure>
-            <figure class="slide" data-slide data-title="Lumen Dental" data-sub="Concept · Family dentistry">
+            <a class="slide" href="https://halvanestudio.vercel.app/" target="_blank" rel="noopener" data-slide data-cursor-text="Open" data-title="Halvane" data-sub="Websites, software and apps. Built to be chosen.">
+              <div class="frame__bar"><i></i><i></i><i></i><span>halvanestudio.vercel.app</span></div>
+              <img src="assets/img/hv-home.webp" alt="Halvane homepage: Websites, software and apps. Built to be chosen." width="1600" height="1000" loading="lazy">
+            </a>
+            <a class="slide" href="https://halvanestudio.vercel.app/concepts/quillmoor" target="_blank" rel="noopener" data-slide data-cursor-text="Open" data-title="Quillmoor Homes" data-sub="Concept · Estate agency · Fraunces + Manrope">
+              <div class="frame__bar"><i></i><i></i><i></i><span>quillmoor-homes.com</span></div>
+              <img src="assets/img/hv-quillmoor.webp" alt="Quillmoor Homes estate agency concept: Find your next front door, with a property search bar" width="1600" height="1000" loading="lazy">
+            </a>
+            <a class="slide" href="https://halvanestudio.vercel.app/concepts/larkmere" target="_blank" rel="noopener" data-slide data-cursor-text="Open" data-title="Larkmere Skin" data-sub="Concept · Skin clinic · Italiana + Jost">
+              <div class="frame__bar"><i></i><i></i><i></i><span>larkmere-skin.com</span></div>
+              <img src="assets/img/hv-larkmere.webp" alt="Larkmere Skin clinic concept: Skin care, explained, with the next available appointment" width="1600" height="1000" loading="lazy">
+            </a>
+            <a class="slide" href="https://halvanestudio.vercel.app/concepts/lumen" target="_blank" rel="noopener" data-slide data-cursor-text="Open" data-title="Lumen Dental" data-sub="Concept · Dental clinic · Outfit + Atkinson Hyperlegible">
               <div class="frame__bar"><i></i><i></i><i></i><span>lumen-dental.com</span></div>
-              <img src="assets/img/hv-lumen.webp" alt="Lumen Dental concept homepage with an online booking widget" width="1400" height="900" loading="lazy">
-            </figure>
-            <figure class="slide" data-slide data-title="In every site" data-sub="Phone first, fast, clear, findable, accessible, yours">
-              <div class="frame__bar"><i></i><i></i><i></i><span>05 · In every site</span></div>
-              <img src="assets/img/hv-included.webp" alt="Halvane's six standards: phone first, fast to load, clear words, found on Google, easy for everyone, yours to own" width="1400" height="875" loading="lazy">
-            </figure>
+              <img src="assets/img/hv-lumen.webp" alt="Lumen Dental concept: Calm, careful dentistry, with an online check-up booking widget" width="1600" height="1000" loading="lazy">
+            </a>
+            <a class="slide" href="https://halvanestudio.vercel.app/concepts/stillpoint" target="_blank" rel="noopener" data-slide data-cursor-text="Open" data-title="Stillpoint" data-sub="Concept · Pilates studio · Bodoni Moda + Karla">
+              <div class="frame__bar"><i></i><i></i><i></i><span>stillpoint-studio.com</span></div>
+              <img src="assets/img/hv-stillpoint.webp" alt="Stillpoint pilates studio concept: Move with intention, over a reformer studio photo" width="1600" height="1000" loading="lazy">
+            </a>
+            <a class="slide" href="https://halvanestudio.vercel.app/#industries" target="_blank" rel="noopener" data-slide data-cursor-text="Open" data-title="Who we build for" data-sub="Estate agencies that sell and let · Clinics that run on appointments">
+              <div class="frame__bar"><i></i><i></i><i></i><span>03 · Who we build for</span></div>
+              <img src="assets/img/hv-industries.webp" alt="Halvane's two industries: real estate agencies and health and hygiene clinics, with a sample listing and booking" width="1600" height="1000" loading="lazy">
+            </a>
+            <a class="slide" href="https://halvanestudio.vercel.app/#included" target="_blank" rel="noopener" data-slide data-cursor-text="Open" data-title="In everything we build" data-sub="Phone first, fast, clear, found on Google, easy for everyone, yours to own">
+              <div class="frame__bar"><i></i><i></i><i></i><span>06 · In everything we build</span></div>
+              <img src="assets/img/hv-included.webp" alt="Halvane's standards: phone first, fast to load, clear words" width="1600" height="1000" loading="lazy">
+            </a>
           </div>
           <div class="show__bar wrap" aria-hidden="true"><span data-show-bar></span></div>
         </div>
       </div>
     </section>
 
-    <!-- ============ SELECTED WORK ============ -->
-    <section class="work" id="work" data-theme="dark" data-shape="2" data-shape-alpha=".5" data-shape-y="-.2">
-      <div class="wrap">
-        <div class="section-head">
-          <p class="label mono"><span>02</span><i aria-hidden="true"></i>Selected work</p>
-          <h2 class="h-xl" data-split>Things I have <em>designed and built.</em></h2>
-        </div>
-
-        <!-- Project: Traffic -->
-        <article class="project">
-          <div class="project__info">
-            <div class="project__top mono"><span class="project__no">01</span><span>2026</span><span>Machine learning · Web app</span></div>
-            <h3 class="project__title">Smart Traffic</h3>
-            <p class="project__lede serif">Predicting road congestion before you leave.</p>
-            <p>A Flask app that forecasts Low, Medium or High congestion for any road, hour, weather and road condition. I generated 34,560 hourly records across 12 roads, trained and compared four classifiers without leaking the answer into the inputs, and built dashboards for trends, peak hours and model performance.</p>
-            <ul class="stats">
-              <li><b data-countup="34560">34,560</b><span>hourly records</span></li>
-              <li><b data-countup="4">4</b><span>models compared</span></li>
-              <li><b data-countup="93.9" data-decimals="1" data-suffix="%">93.9%</b><span>held-out accuracy</span></li>
-            </ul>
-            <ul class="tags mono"><li>Python</li><li>Flask</li><li>scikit-learn</li><li>MySQL</li><li>Matplotlib</li></ul>
-            <div class="project__links">
-              <a class="link" href="https://github.com/dixonsimon/traffic" target="_blank" rel="noopener">View code <span aria-hidden="true">↗</span></a>
-            </div>
-          </div>
-          <div class="project__media">
-            <figure class="frame" data-tilt>
-              <div class="frame__bar"><i></i><i></i><i></i><span>Predict congestion</span></div>
-              <div class="frame__media" data-parallax><img src="assets/img/traffic-predict.webp" alt="Prediction screen showing High congestion for Airport Link Road on Monday at 08:00" width="1440" height="900" loading="lazy"></div>
-            </figure>
-            <div class="duo">
-              <figure class="frame frame--sm" data-tilt>
-                <div class="frame__media"><img src="assets/img/traffic-dash.webp" alt="Analytics dashboard with hourly and daily traffic trends" width="1440" height="900" loading="lazy"></div>
-              </figure>
-              <figure class="frame frame--sm" data-tilt>
-                <div class="frame__media"><img src="assets/img/traffic-models.webp" alt="Model comparison table and charts for four classifiers" width="1440" height="900" loading="lazy"></div>
-              </figure>
-            </div>
-          </div>
-        </article>
-
-        <!-- Project: CatchUp Now -->
-        <article class="project project--flip">
-          <div class="project__info">
-            <div class="project__top mono"><span class="project__no">02</span><span>2026</span><span>Android · AI · Team project</span></div>
-            <h3 class="project__title">CatchUp Now</h3>
-            <p class="project__lede serif">One evening brief instead of fifty notifications.</p>
-            <p>An Android assistant that gathers calendar events, missed calls and notifications into a single evening brief, then answers questions about your day. Built with budget phones in mind, with most of the reading done on the device.</p>
-            <ul class="tags mono"><li>Kotlin</li><li>Android SDK</li><li>Gemini API</li></ul>
-            <div class="project__links">
-              <a class="link" href="https://catchup-now.vercel.app/" target="_blank" rel="noopener">Visit site <span aria-hidden="true">↗</span></a>
-            </div>
-          </div>
-          <div class="project__media">
-            <figure class="frame" data-tilt>
-              <div class="frame__bar"><i></i><i></i><i></i><span>catchup-now.vercel.app</span></div>
-              <div class="frame__media" data-parallax><img src="assets/img/catchup-now.webp" alt="CatchUp Now website with a phone showing the evening brief" width="1375" height="868" loading="lazy"></div>
-            </figure>
-          </div>
-        </article>
-
-        <!-- Project: Ashes of Outlaws -->
-        <article class="project">
-          <div class="project__info">
-            <div class="project__top mono"><span class="project__no">03</span><span>2026</span><span>Game · Unity 6</span></div>
-            <h3 class="project__title">Ashes of Outlaws</h3>
-            <p class="project__lede serif">A third-person Western, built from the camera out.</p>
-            <p>An action-adventure prototype in Unity 6 with the Universal Render Pipeline. I wrote an over-the-shoulder orbit camera that smooths out terrain jitter, and a facial animation system that gives the bandit blinking, glancing eyes with properly layered materials.</p>
-            <ul class="tags mono"><li>C#</li><li>Unity 6</li><li>URP</li></ul>
-            <div class="project__links">
-              <a class="link" href="https://github.com/dixonsimon/Ashes-of-Outlaws" target="_blank" rel="noopener">View code <span aria-hidden="true">↗</span></a>
-            </div>
-          </div>
-          <div class="project__media">
-            <figure class="frame frame--poster" data-tilt data-poster>
-              <div class="poster">
-                <svg class="poster__art" viewBox="0 0 800 500" preserveAspectRatio="xMidYMid slice" aria-hidden="true">
-                  <defs>
-                    <linearGradient id="sky" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#1b0f0b"/><stop offset=".45" stop-color="#6e2a14"/><stop offset=".72" stop-color="#d0642a"/><stop offset="1" stop-color="#f3b46b"/></linearGradient>
-                    <radialGradient id="sun" cx=".5" cy=".5" r=".5"><stop offset="0" stop-color="#ffe2b0"/><stop offset=".6" stop-color="#ffb366"/><stop offset="1" stop-color="#ff8a3d" stop-opacity="0"/></radialGradient>
-                  </defs>
-                  <rect x="-40" y="-60" width="880" height="620" fill="url(#sky)"/>
-                  <g class="pl" style="--d:.15"><circle cx="560" cy="330" r="150" fill="url(#sun)" opacity=".9"/><circle cx="560" cy="330" r="62" fill="#ffd9a1"/></g>
-                  <path class="pl" style="--d:.35" d="M-40 360 L70 360 L82 300 L150 296 L162 360 L300 362 L330 330 L360 365 L840 362 L840 560 L-40 560Z" fill="#3a170d"/>
-                  <path class="pl" style="--d:.6" d="M-40 400 L180 392 L200 352 L290 348 L306 395 L520 400 L548 372 L640 368 L660 402 L840 398 L840 560 L-40 560Z" fill="#240d07"/>
-                  <g class="pl" style="--d:1"><path d="M-40 440 Q200 425 400 438 T840 432 L840 560 L-40 560Z" fill="#120604"/><g fill="#120604"><rect x="118" y="404" width="5" height="40"/><path d="M110 418 h21 v4 h-21z"/><path d="M106 402 q14-10 28 0 q-14 4-28 0z"/></g></g>
-                </svg>
-                <div class="poster__type">
-                  <span class="mono">A Unity 6 prototype</span>
-                  <strong class="serif">Ashes of<br><em>Outlaws</em></strong>
-                </div>
-              </div>
-            </figure>
-          </div>
-        </article>
-
-        <!-- Project: UX case studies -->
-        <article class="project project--flip">
-          <div class="project__info">
-            <div class="project__top mono"><span class="project__no">04</span><span>2026</span><span>UX case studies</span></div>
-            <h3 class="project__title">CityLib &amp; ZenRoutine</h3>
-            <p class="project__lede serif">Two problems, solved on paper first.</p>
-            <p><b>CityLib</b> audits a municipal library website against Nielsen's ten heuristics, then redesigns it with a small design system and a high-fidelity mockup. <b>ZenRoutine</b> takes a habit tracker from user research and personas through flows to interactive wireframes, with one rule: logging a habit should take one tap.</p>
-            <ul class="tags mono"><li>Heuristic evaluation</li><li>Personas</li><li>User flows</li><li>Wireframes</li></ul>
-            <div class="project__links">
-              <a class="link" href="https://dixonsimon.github.io/citylib/" target="_blank" rel="noopener">CityLib case study <span aria-hidden="true">↗</span></a>
-              <a class="link" href="https://dixonsimon.github.io/ZenRoutine/" target="_blank" rel="noopener">ZenRoutine case study <span aria-hidden="true">↗</span></a>
-            </div>
-          </div>
-          <div class="project__media">
-            <figure class="frame" data-tilt>
-              <div class="frame__bar"><i></i><i></i><i></i><span>dixonsimon.github.io/citylib</span></div>
-              <div class="frame__media" data-parallax><img src="assets/img/citylib.webp" alt="CityLib case study cover: revitalizing the library website" width="1440" height="900" loading="lazy"></div>
-            </figure>
-            <figure class="frame" data-tilt>
-              <div class="frame__bar"><i></i><i></i><i></i><span>dixonsimon.github.io/ZenRoutine</span></div>
-              <div class="frame__media" data-parallax><img src="assets/img/zenroutine.webp" alt="ZenRoutine case study cover: minimalist habit tracking" width="1440" height="900" loading="lazy"></div>
-            </figure>
-          </div>
-        </article>
+    <!-- ============ WORK: fly-through intro ============ -->
+    <section class="zoom" id="work" data-theme="dark" data-shape="3" data-shape-alpha=".7" data-shape-x="0" data-shape-scale="1.15" data-zoom>
+      <div class="zoom__pin">
+        <p class="label mono zoom__label"><span>02</span><i aria-hidden="true"></i>Selected work</p>
+        <h2 class="zoom__title" aria-label="Selected work"><span aria-hidden="true">Selected <em>w<span class="zoom__o" data-zoom-origin>o</span>rk</em></span></h2>
+        <p class="zoom__sub mono">Four projects<i aria-hidden="true"></i>2025 – 2026</p>
       </div>
     </section>
 
-    <!-- ============ INDEX ============ -->
-    <section class="index" id="index" data-theme="dark" data-shape="3" data-shape-alpha=".55" data-shape-x="1.9" data-shape-mx="0">
+    <!-- ============ WORK: cases ============ -->
+    <section class="work" data-theme="dark" data-shape="2" data-shape-alpha=".45" data-shape-y="-.2">
       <div class="wrap">
-        <div class="section-head section-head--row">
-          <p class="label mono"><span>03</span><i aria-hidden="true"></i>Index</p>
-          <h2 class="h-lg" data-split>More builds, <em>experiments and games.</em></h2>
-        </div>
 
-        <ol class="list" data-list>
-          <li data-row><a href="https://codexforge.vercel.app" target="_blank" rel="noopener" data-preview="assets/img/codexforge.webp">
-            <span class="list__year mono">2026</span>
-            <span class="list__name">CodexForge</span>
-            <span class="list__desc">Prototype of an AI coding workspace with a Monaco editor, chat and agent services</span>
-            <span class="list__stack mono">Next.js · NestJS · FastAPI<em>Live demo</em></span>
-            <span class="list__go" aria-hidden="true">↗</span></a></li>
-          <li data-row><a href="https://science-web-game.vercel.app/" target="_blank" rel="noopener" data-preview="assets/img/scientist-sandbox.webp">
-            <span class="list__year mono">2025</span>
-            <span class="list__name">Scientist Sandbox</span>
-            <span class="list__desc">A browser game: explore Perlin-noise hills and collect samples that teach environmental facts</span>
-            <span class="list__stack mono">Three.js<em>Playable</em></span>
-            <span class="list__go" aria-hidden="true">↗</span></a></li>
-          <li data-row><a href="https://github.com/dixonsimon/Doogo---A-Dog-Game" target="_blank" rel="noopener" data-preview="assets/img/doogo.svg">
-            <span class="list__year mono">2026</span>
-            <span class="list__name">Doogo</span>
-            <span class="list__desc">A 3D game about a dog in an endless, procedurally generated world, written in C</span>
-            <span class="list__stack mono">C · raylib<em>Source</em></span>
-            <span class="list__go" aria-hidden="true">↗</span></a></li>
-          <li data-row><a href="https://nammaration.vercel.app" target="_blank" rel="noopener" data-preview="assets/img/namma-ration.webp">
-            <span class="list__year mono">2025</span>
-            <span class="list__name">Namma Ration</span>
-            <span class="list__desc">An accessible ration-shop front end for cardholders with limited digital literacy</span>
-            <span class="list__stack mono">HTML · CSS · JS<em>Live demo</em></span>
-            <span class="list__go" aria-hidden="true">↗</span></a></li>
-          <li data-row><a href="https://socse-chaiwala.vercel.app" target="_blank" rel="noopener" data-preview="assets/img/socse-chaiwala.webp">
-            <span class="list__year mono">2026</span>
-            <span class="list__name">SOCSE Chaiwala</span>
-            <span class="list__desc">A playful, chai-themed site for our department, with a click-for-aura game</span>
-            <span class="list__stack mono">HTML · CSS · JS<em>Live demo</em></span>
-            <span class="list__go" aria-hidden="true">↗</span></a></li>
-          <li data-row><a href="https://chaiwala-gpa.vercel.app/" target="_blank" rel="noopener" data-preview="assets/img/gpa-calculator.webp">
-            <span class="list__year mono">2025</span>
-            <span class="list__name">GPA Calculator</span>
-            <span class="list__desc">SGPA calculator for RV University's AI &amp; ML students, with credit-weighted results</span>
-            <span class="list__stack mono">JavaScript<em>Live demo</em></span>
-            <span class="list__go" aria-hidden="true">↗</span></a></li>
-        </ol>
-        <div class="preview" aria-hidden="true" data-preview-box><img alt=""></div>
+        <!-- Smart Traffic -->
+        <article class="case" style="--tint: 96, 150, 255">
+          <header class="case__head">
+            <span class="case__no">01</span>
+            <h3 class="case__title" data-chars data-drift="-1">Smart Traffic</h3>
+            <p class="case__meta mono"><span>2026</span><span>Machine learning · Web app</span></p>
+          </header>
+          <div class="case__body">
+            <div class="case__info">
+              <p class="case__lede serif">Predicting road congestion before you leave.</p>
+              <p>A Flask app that forecasts Low, Medium or High congestion for any road, hour, weather and road condition. I generated 34,560 hourly records across 12 roads, trained and compared four classifiers without leaking the answer into the inputs, and built dashboards for trends, peak hours and model performance.</p>
+              <ul class="stats">
+                <li><b data-countup="34560">34,560</b><span>hourly records</span></li>
+                <li><b data-countup="4">4</b><span>models compared</span></li>
+                <li><b data-countup="93.9" data-decimals="1" data-suffix="%">93.9%</b><span>held-out accuracy</span></li>
+              </ul>
+              <ul class="tags mono"><li>Python</li><li>Flask</li><li>scikit-learn</li><li>MySQL</li><li>Matplotlib</li></ul>
+              <div class="case__links">
+                <a class="link" href="https://github.com/dixonsimon/traffic" target="_blank" rel="noopener">View code <span aria-hidden="true">↗</span></a>
+              </div>
+            </div>
+            <div class="case__media">
+              <a class="frame" href="https://github.com/dixonsimon/traffic" target="_blank" rel="noopener" data-tilt data-cursor-text="Code" tabindex="-1">
+                <div class="frame__bar"><i></i><i></i><i></i><span>Predict congestion</span></div>
+                <div class="frame__media" data-parallax><img src="assets/img/traffic-predict.webp" alt="Prediction screen showing High congestion for Airport Link Road on Monday at 08:00" width="1440" height="900" loading="lazy"></div>
+              </a>
+              <div class="duo">
+                <figure class="frame frame--sm" data-tilt>
+                  <div class="frame__media"><img src="assets/img/traffic-dash.webp" alt="Analytics dashboard with hourly and daily traffic trends" width="1440" height="900" loading="lazy"></div>
+                </figure>
+                <figure class="frame frame--sm" data-tilt>
+                  <div class="frame__media"><img src="assets/img/traffic-models.webp" alt="Model comparison table and charts for four classifiers" width="1440" height="900" loading="lazy"></div>
+                </figure>
+              </div>
+            </div>
+          </div>
+        </article>
 
-        <a class="link link--lg" href="https://github.com/dixonsimon" target="_blank" rel="noopener">Everything on GitHub <span aria-hidden="true">↗</span></a>
+        <!-- CatchUp Now -->
+        <article class="case case--flip" style="--tint: 168, 85, 247">
+          <header class="case__head">
+            <span class="case__no">02</span>
+            <h3 class="case__title" data-chars data-drift="1">CatchUp Now</h3>
+            <p class="case__meta mono"><span>2026</span><span>Android · AI · Team project</span></p>
+          </header>
+          <div class="case__body">
+            <div class="case__info">
+              <p class="case__lede serif">One evening brief instead of fifty notifications.</p>
+              <p>An Android assistant that gathers calendar events, missed calls and notifications into a single evening brief, then answers questions about your day. Built with budget phones in mind, with most of the reading done on the device.</p>
+              <ul class="tags mono"><li>Kotlin</li><li>Android SDK</li><li>Gemini API</li></ul>
+              <div class="case__links">
+                <a class="link" href="https://catchup-now.vercel.app/" target="_blank" rel="noopener">Visit site <span aria-hidden="true">↗</span></a>
+              </div>
+            </div>
+            <div class="case__media">
+              <a class="frame" href="https://catchup-now.vercel.app/" target="_blank" rel="noopener" data-tilt data-cursor-text="Visit" tabindex="-1">
+                <div class="frame__bar"><i></i><i></i><i></i><span>catchup-now.vercel.app</span></div>
+                <div class="frame__media" data-parallax><img src="assets/img/catchup-now.webp" alt="CatchUp Now website with a phone showing the evening brief" width="1375" height="868" loading="lazy"></div>
+              </a>
+            </div>
+          </div>
+        </article>
+
+        <!-- CodexForge -->
+        <article class="case" style="--tint: 255, 122, 26">
+          <header class="case__head">
+            <span class="case__no">03</span>
+            <h3 class="case__title" data-chars data-drift="-1">CodexForge</h3>
+            <p class="case__meta mono"><span>2026</span><span>AI tooling · Full stack</span></p>
+          </header>
+          <div class="case__body">
+            <div class="case__info">
+              <p class="case__lede serif">A coding assistant with a sandbox of its own.</p>
+              <p>A prototype workspace for an autonomous coding assistant: a Monaco editor, a chat panel and agent services that run code in isolated sandboxes, index a repository for retrieval, and track API keys and usage. A Next.js front end over NestJS and FastAPI services, in a monochrome console.</p>
+              <ul class="tags mono"><li>Next.js</li><li>NestJS</li><li>FastAPI</li><li>Monaco</li></ul>
+              <div class="case__links">
+                <a class="link" href="https://codexforge.vercel.app" target="_blank" rel="noopener">Live demo <span aria-hidden="true">↗</span></a>
+              </div>
+            </div>
+            <div class="case__media">
+              <a class="frame" href="https://codexforge.vercel.app" target="_blank" rel="noopener" data-tilt data-cursor-text="Visit" tabindex="-1">
+                <div class="frame__bar"><i></i><i></i><i></i><span>codexforge.vercel.app</span></div>
+                <div class="frame__media" data-parallax><img src="assets/img/codexforge.webp" alt="CodexForge landing page: Autonomous code assistant and executable sandbox" width="1600" height="1000" loading="lazy"></div>
+              </a>
+            </div>
+          </div>
+        </article>
+
+        <!-- Ashes of Outlaws -->
+        <article class="case case--flip" style="--tint: 240, 120, 50">
+          <header class="case__head">
+            <span class="case__no">04</span>
+            <h3 class="case__title" data-chars data-drift="1">Ashes of Outlaws</h3>
+            <p class="case__meta mono"><span>2026</span><span>Game · Unity 6</span></p>
+          </header>
+          <div class="case__body">
+            <div class="case__info">
+              <p class="case__lede serif">A third-person Western, built from the camera out.</p>
+              <p>An action-adventure prototype in Unity 6 with the Universal Render Pipeline. I wrote an over-the-shoulder orbit camera that smooths out terrain jitter, and a facial animation system that gives the bandit blinking, glancing eyes with properly layered materials.</p>
+              <ul class="tags mono"><li>C#</li><li>Unity 6</li><li>URP</li></ul>
+              <div class="case__links">
+                <a class="link" href="https://github.com/dixonsimon/Ashes-of-Outlaws" target="_blank" rel="noopener">View code <span aria-hidden="true">↗</span></a>
+              </div>
+            </div>
+            <div class="case__media">
+              <figure class="frame frame--poster" data-tilt data-poster>
+                <div class="poster">
+                  <svg class="poster__art" viewBox="0 0 800 500" preserveAspectRatio="xMidYMid slice" aria-hidden="true">
+                    <defs>
+                      <linearGradient id="sky" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#1b0f0b"/><stop offset=".45" stop-color="#6e2a14"/><stop offset=".72" stop-color="#d0642a"/><stop offset="1" stop-color="#f3b46b"/></linearGradient>
+                      <radialGradient id="sun" cx=".5" cy=".5" r=".5"><stop offset="0" stop-color="#ffe2b0"/><stop offset=".6" stop-color="#ffb366"/><stop offset="1" stop-color="#ff8a3d" stop-opacity="0"/></radialGradient>
+                    </defs>
+                    <rect x="-40" y="-60" width="880" height="620" fill="url(#sky)"/>
+                    <g class="pl" style="--d:.15"><circle cx="560" cy="330" r="150" fill="url(#sun)" opacity=".9"/><circle cx="560" cy="330" r="62" fill="#ffd9a1"/></g>
+                    <path class="pl" style="--d:.35" d="M-40 360 L70 360 L82 300 L150 296 L162 360 L300 362 L330 330 L360 365 L840 362 L840 560 L-40 560Z" fill="#3a170d"/>
+                    <path class="pl" style="--d:.6" d="M-40 400 L180 392 L200 352 L290 348 L306 395 L520 400 L548 372 L640 368 L660 402 L840 398 L840 560 L-40 560Z" fill="#240d07"/>
+                    <g class="pl" style="--d:1"><path d="M-40 440 Q200 425 400 438 T840 432 L840 560 L-40 560Z" fill="#120604"/><g fill="#120604"><rect x="118" y="404" width="5" height="40"/><path d="M110 418 h21 v4 h-21z"/><path d="M106 402 q14-10 28 0 q-14 4-28 0z"/></g></g>
+                  </svg>
+                  <div class="poster__type">
+                    <span class="mono">A Unity 6 prototype</span>
+                    <strong class="serif">Ashes of<br><em>Outlaws</em></strong>
+                  </div>
+                </div>
+              </figure>
+            </div>
+          </div>
+        </article>
+
+        <a class="link link--lg" href="https://github.com/dixonsimon" target="_blank" rel="noopener">More on GitHub <span aria-hidden="true">↗</span></a>
       </div>
     </section>
 
     <!-- ============ ABOUT ============ -->
-    <section class="about" id="about" data-theme="light" data-shape="1.5">
+    <section class="about" id="about" data-theme="light" data-shape="1.5" data-sheet>
       <div class="wrap">
-        <p class="label mono"><span>04</span><i aria-hidden="true"></i>About</p>
+        <p class="label mono"><span>03</span><i aria-hidden="true"></i>About</p>
         <div class="about__grid">
           <figure class="about__photo" data-reveal data-photo>
             <img src="assets/img/portrait.webp" alt="Portrait of Dixon Simon" width="699" height="565" loading="lazy">
@@ -363,7 +343,7 @@
           </figure>
           <div class="about__copy">
             <h2 class="h-xl" data-split>Hi, I'm <em>Dixon.</em></h2>
-            <p class="about__lead" data-fade>I'm studying for a B.Sc (Hons) in Artificial Intelligence and Machine Learning at RV University in Bengaluru, and I run Halvane, a small web design studio.</p>
+            <p class="about__lead" data-fade>I'm studying for a B.Sc (Hons) in Artificial Intelligence and Machine Learning at RV University in Bengaluru, and I run Halvane, a small studio for websites, software and apps.</p>
             <p data-fade>I like work that sits between disciplines. A model is only useful if someone can read its output, and a beautiful site is only useful if it loads on a slow phone. So I usually do all three parts: design it, write it, build it.</p>
           </div>
         </div>
@@ -392,7 +372,7 @@
     <!-- ============ CONTACT ============ -->
     <section class="contact" id="contact" data-theme="dark" data-shape="0" data-shape-x="1.7" data-shape-scale="1.3" data-shape-alpha=".9" data-shape-my="0.6" data-shape-ms=".9">
       <div class="wrap">
-        <p class="label mono"><span>05</span><i aria-hidden="true"></i>Contact</p>
+        <p class="label mono"><span>04</span><i aria-hidden="true"></i>Contact</p>
         <h2 class="contact__title" data-split>Have something <em>worth building?</em></h2>
 
         <div class="contact__mail">
@@ -402,8 +382,8 @@
 
         <div class="contact__grid">
           <div>
-            <h3 class="mono">For a website for your business</h3>
-            <p>Write to Halvane at <a class="link" href="mailto:dixonsimonbusiness@gmail.com">dixonsimonbusiness@gmail.com</a>. Every project starts with a free homepage concept.</p>
+            <h3 class="mono">For your business</h3>
+            <p>For a website, custom software or an app, write to Halvane at <a class="link" href="mailto:dixonsimonbusiness@gmail.com">dixonsimonbusiness@gmail.com</a> or <a class="link" href="https://halvanestudio.vercel.app/#contact" target="_blank" rel="noopener">ask for a free concept <span aria-hidden="true">↗</span></a>. You see it before you pay anything.</p>
           </div>
           <div>
             <h3 class="mono">Elsewhere</h3>

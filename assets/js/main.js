@@ -41,13 +41,32 @@
     $$('.w', el).forEach((w) => w.setAttribute('aria-hidden', 'true'));
   });
 
+  /* ---------- split big titles into characters ---------- */
+  $$('[data-chars]').forEach((el) => {
+    const text = el.textContent;
+    el.setAttribute('aria-label', text);
+    el.textContent = '';
+    let i = 0;
+    text.split(' ').forEach((word, wi) => {
+      if (wi) el.appendChild(document.createTextNode(' '));
+      // keep each word's letters together so lines only break between words
+      const w = document.createElement('span'); w.className = 'cw'; w.setAttribute('aria-hidden', 'true');
+      [...word].forEach((c) => {
+        const o = document.createElement('span'); o.className = 'ch';
+        const s = document.createElement('span'); s.textContent = c; s.style.setProperty('--c', i++);
+        o.appendChild(s); w.appendChild(o);
+      });
+      el.appendChild(w); i++;
+    });
+  });
+
   /* ---------- reveal on scroll ---------- */
   const io = new IntersectionObserver((entries) => {
     entries.forEach((e) => {
       if (e.isIntersecting) { e.target.classList.add('is-in'); io.unobserve(e.target); }
     });
   }, { rootMargin: '0px 0px -8% 0px', threshold: 0.05 });
-  $$('[data-split],[data-fade],[data-reveal]').forEach((el) => io.observe(el));
+  $$('[data-split],[data-fade],[data-reveal],[data-chars]').forEach((el) => io.observe(el));
 
   /* ---------- count-up stats ---------- */
   const countIO = new IntersectionObserver((entries) => {
@@ -70,6 +89,7 @@
   /* ---------- loader ---------- */
   const loader = $('.loader');
   const counter = $('[data-count]');
+  const loadBar = $('[data-loader-bar]');
   const seen = (() => { try { return sessionStorage.getItem('ds-seen') === '1'; } catch (e) { return false; } })();
   const finishLoad = () => {
     root.classList.add('is-loaded');
@@ -80,10 +100,12 @@
     if (loader) loader.classList.add('is-gone');
     requestAnimationFrame(finishLoad);
   } else {
-    const dur = 1100; const t0 = performance.now();
+    const dur = 1300; const t0 = performance.now();
     const tick = (t) => {
       const p = Math.min(1, (t - t0) / dur);
-      counter.textContent = Math.round(easeOut(p) * 100);
+      const e = easeOut(p);
+      counter.textContent = String(Math.round(e * 100)).padStart(2, '0');
+      if (loadBar) loadBar.style.transform = `scaleX(${e.toFixed(3)})`;
       if (p < 1) requestAnimationFrame(tick);
       else {
         loader.classList.add('is-done');
@@ -159,11 +181,39 @@
     entries.forEach((e) => (e.isIntersecting ? near.add(e.target) : near.delete(e.target)));
   }, { rootMargin: '25% 0px 25% 0px' });
   const tilts = $$('[data-tilt]');
-  const rows = $$('[data-row]');
+  const folds = $$('[data-fold]');
   const parallax = $$('[data-parallax]');
   const posters = $$('[data-poster]');
-  [...tilts, ...rows, ...parallax, ...posters].forEach((el) => nearIO.observe(el));
+  const drifts = $$('[data-drift]');
+  const sheets = $$('[data-sheet]');
+  [...tilts, ...folds, ...parallax, ...posters, ...drifts, ...sheets].forEach((el) => nearIO.observe(el));
   if (footWord) nearIO.observe(footWord);
+
+  /* ---------- "Selected work": fly through the o ---------- */
+  const zoom = $('[data-zoom]');
+  const zoomTitle = zoom ? $('.zoom__title', zoom) : null;
+  const zoomO = zoom ? $('[data-zoom-origin]', zoom) : null;
+  const zoomFade = zoom ? $$('.zoom__label, .zoom__sub', zoom) : [];
+  const measureZoom = () => {
+    if (!zoomTitle || !zoomO) return;
+    // offsets ignore transforms, so this is stable mid-animation; aim at the o's counter
+    zoomTitle.style.position = 'relative';
+    const ox = zoomO.offsetLeft + zoomO.offsetWidth * 0.54;
+    const oy = zoomO.offsetTop + zoomO.offsetHeight * 0.6;
+    zoomTitle.style.setProperty('--ox', `${ox.toFixed(1)}px`);
+    zoomTitle.style.setProperty('--oy', `${oy.toFixed(1)}px`);
+  };
+  if (zoom) { nearIO.observe(zoom); measureZoom(); window.addEventListener('resize', measureZoom); if (document.fonts) document.fonts.ready.then(measureZoom); }
+  const updateZoom = (vh) => {
+    const r = zoom.getBoundingClientRect();
+    const p = clamp(-r.top / Math.max(1, r.height - vh));
+    const e = Math.pow(p, 2.4);
+    const s = 1 + e * 90;
+    zoomTitle.style.transform = `scale(${s.toFixed(3)})`;
+    zoomTitle.style.opacity = (1 - clamp((p - 0.82) / 0.14)).toFixed(3);
+    zoomTitle.style.filter = p > 0.55 ? `blur(${((p - 0.55) * 6).toFixed(2)}px)` : 'none';
+    zoomFade.forEach((el) => { el.style.opacity = (1 - clamp(p / 0.22)).toFixed(3); el.style.transform = `translate3d(0, ${(-p * 80).toFixed(1)}px, 0)`; });
+  };
 
   /* ---------- Halvane coverflow ---------- */
   const show = $('[data-show]');
@@ -259,26 +309,51 @@
         if (stack) stack.style.opacity = (1 - clamp((p - 0.45) * 2)).toFixed(3);
       }
 
+      // scroll speed drives a vertical smear on the work frames (motion blur + skew)
+      const sv = clamp(smoothVel, -60, 60);
+      const smear = Math.abs(sv) > 1.2 ? Math.min(3.2, (Math.abs(sv) - 1.2) * 0.09) : 0;
+      const skew = sv * -0.045;
+
       // project frames tilt into place in 3D
       tilts.forEach((el) => {
         if (!near.has(el)) return;
         const r = el.getBoundingClientRect();
         const t = easeOut(clamp((vh - r.top) / (vh * 0.8)));
         const out = clamp(-r.top / (r.height * 1.4));
-        const side = el.closest('.project--flip') ? 1 : -1;
+        const side = el.closest('.case--flip') ? 1 : -1;
         const k = 1 - t;
-        el.style.transform = `perspective(1500px) translate3d(0, ${(k * 110).toFixed(1)}px, ${(k * -240 - out * 120).toFixed(1)}px) rotateX(${(k * 24 - out * 10).toFixed(2)}deg) rotateY(${(side * k * 14).toFixed(2)}deg)`;
+        el.style.transform = `perspective(1500px) translate3d(0, ${(k * 110).toFixed(1)}px, ${(k * -240 - out * 120).toFixed(1)}px) rotateX(${(k * 24 - out * 10).toFixed(2)}deg) rotateY(${(side * k * 14).toFixed(2)}deg) skewY(${skew.toFixed(2)}deg)`;
         el.style.opacity = (0.1 + 0.9 * t).toFixed(3);
+        el.style.filter = smear ? `blur(${smear.toFixed(2)}px)` : '';
       });
 
-      // index rows fold up from the bottom edge
-      rows.forEach((el) => {
+      // case titles glide in from the opposite side and settle flush with their edge
+      drifts.forEach((el) => {
         if (!near.has(el)) return;
         const r = el.getBoundingClientRect();
-        const t = easeOut(clamp((vh - r.top) / (vh * 0.32)));
-        el.style.transform = `rotateX(${((1 - t) * -75).toFixed(2)}deg) translate3d(0, ${((1 - t) * 30).toFixed(1)}px, 0)`;
+        const k = 1 - easeOut(clamp((vh - r.top) / (vh * 0.75)));
+        el.style.transform = `translate3d(${(-(+el.dataset.drift) * k * 12).toFixed(2)}vw, 0, 0)`;
+      });
+
+      // service cards fold up from their bottom edge, one after another
+      folds.forEach((el, i) => {
+        if (!near.has(el)) return;
+        const r = el.getBoundingClientRect();
+        const t = easeOut(clamp((vh - r.top) / (vh * 0.42) - (i % 4) * 0.12));
+        el.style.transform = `rotateX(${((1 - t) * -60).toFixed(2)}deg) translate3d(0, ${((1 - t) * 50).toFixed(1)}px, 0)`;
         el.style.opacity = t.toFixed(3);
       });
+
+      // light sections arrive as a rounded sheet that widens to full bleed
+      sheets.forEach((el) => {
+        if (!near.has(el)) return;
+        const r = el.getBoundingClientRect();
+        const k = 1 - easeOut(clamp((vh - r.top) / vh));
+        el.style.setProperty('--sx', `${(k * Math.min(window.innerWidth * 0.06, 80)).toFixed(1)}px`);
+        el.style.setProperty('--sr', `${(k * 48).toFixed(1)}px`);
+      });
+
+      if (zoom && near.has(zoom)) updateZoom(vh);
 
       // image parallax inside frames
       parallax.forEach((el) => {
@@ -363,30 +438,49 @@
     photo.addEventListener('pointerleave', () => { photo.style.setProperty('--tx', '0deg'); photo.style.setProperty('--ty', '0deg'); });
   }
 
-  /* ---------- index hover preview (tilts with pointer speed) ---------- */
-  const box = $('[data-preview-box]');
-  if (box && finePointer) {
-    const img = $('img', box);
-    let tx = 0, ty = 0, cx = 0, cy = 0, on = false, running = false;
+  /* ---------- pointer label over media ("View", "Open", "Code") ---------- */
+  const cursor = $('[data-cursor]');
+  if (cursor && finePointer) {
+    const label = $('[data-cursor-label]', cursor);
+    let tx = -200, ty = -200, cx = -200, cy = -200, running = false, on = false;
     const loop = () => {
-      const px = cx; cx += (tx - cx) * 0.14; cy += (ty - cy) * 0.14;
-      const maxX = window.innerWidth - box.offsetWidth / 2 - 16;
-      const rot = clamp((cx - px) * 0.6, -14, 14);
-      box.style.transform = `translate3d(${Math.min(cx, maxX).toFixed(1)}px, ${cy.toFixed(1)}px, 0) translate(-50%, -50%) perspective(800px) rotateY(${rot.toFixed(2)}deg) rotateZ(${(rot * 0.2).toFixed(2)}deg) scale(${on ? 1 : 0.85})`;
-      if (on || Math.abs(tx - cx) > 0.5) requestAnimationFrame(loop); else running = false;
+      cx += (tx - cx) * 0.2; cy += (ty - cy) * 0.2;
+      cursor.style.transform = `translate3d(${cx.toFixed(1)}px, ${cy.toFixed(1)}px, 0)`;
+      if (on || Math.abs(tx - cx) + Math.abs(ty - cy) > 0.5) requestAnimationFrame(loop); else running = false;
     };
     const start = () => { if (!running) { running = true; requestAnimationFrame(loop); } };
-    $$('[data-list] a').forEach((a) => {
-      const src = a.dataset.preview;
-      if (src) { const pre = new Image(); pre.src = src; }
-      a.addEventListener('pointerenter', (e) => {
-        if (!src) return;
-        if (!on) { cx = e.clientX + 200; cy = e.clientY; }
-        img.src = src; on = true; box.classList.add('is-on'); start();
+    window.addEventListener('pointermove', (e) => { tx = e.clientX; ty = e.clientY; if (on) start(); }, { passive: true });
+    $$('[data-cursor-text]').forEach((el) => {
+      el.addEventListener('pointerenter', (e) => {
+        if (!on) { cx = tx = e.clientX; cy = ty = e.clientY; }
+        label.textContent = el.dataset.cursorText;
+        cursor.classList.toggle('is-hv', !!el.closest('.now'));
+        on = true; cursor.classList.add('is-on'); start();
       });
-      a.addEventListener('pointerleave', () => { on = false; box.classList.remove('is-on'); });
+      el.addEventListener('pointerleave', () => { on = false; cursor.classList.remove('is-on'); });
     });
-    window.addEventListener('pointermove', (e) => { tx = e.clientX + 200; ty = e.clientY; if (on) start(); }, { passive: true });
+    // a hidden slide can end up under a stationary pointer as the coverflow turns
+    window.addEventListener('scroll', () => { if (on && !document.querySelector('[data-cursor-text]:hover')) { on = false; cursor.classList.remove('is-on'); } }, { passive: true });
+  }
+
+  /* ---------- nav labels scramble on hover ---------- */
+  if (!reduced) {
+    const glyphs = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ#/*+';
+    $$('[data-scramble]').forEach((el) => {
+      const final = el.textContent; let raf = 0;
+      el.addEventListener('pointerenter', () => {
+        cancelAnimationFrame(raf);
+        if (!el.style.minWidth) { el.style.display = 'inline-block'; el.style.minWidth = el.offsetWidth + 'px'; el.style.textAlign = 'center'; }
+        const t0 = performance.now();
+        const step = (t) => {
+          const p = clamp((t - t0) / 420);
+          const keep = Math.floor(p * final.length);
+          el.textContent = final.split('').map((c, i) => (i < keep || c === ' ' ? c : glyphs[(Math.random() * glyphs.length) | 0])).join('');
+          if (p < 1) raf = requestAnimationFrame(step); else el.textContent = final;
+        };
+        raf = requestAnimationFrame(step);
+      });
+    });
   }
 
   /* ---------- copy email ---------- */
